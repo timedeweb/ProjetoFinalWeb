@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/ProjetoFinalWeb">
+    <Resource 
+        auth="Container" 
+        driverClassName="org.postgresql.Driver" 
+        logAbandoned="true" 
+        maxActive="5" 
+        maxIdle="3" 
+        maxWait="10000" 
+        name="jdbc/projetodatasource" 
+        username="postgres"
+        password="nick" 
+        removeAbandoned="true" 
+        type="javax.sql.DataSource" 
+        url="jdbc:postgresql://localhost:5432/projetofinalweb" 
+    />
+    <Realm className="org.apache.catalina.realm.LockOutRealm">
+        <Realm className="org.apache.catalina.realm.JDBCRealm"
+               driverName="org.postgresql.Driver"
+               connectionURL="jdbc:postgresql://localhost:5432/projetofinalweb"
+               userTable="usuario"
+               userNameCol="email"
+               userCredCol="senha"
+               userRoleTable="perfil"
+               roleNameCol="descricao"
+               digest="SHA"
+        />
+  </Realm>
+</Context>
