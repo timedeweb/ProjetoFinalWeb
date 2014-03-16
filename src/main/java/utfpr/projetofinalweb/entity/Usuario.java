@@ -34,18 +34,6 @@ public class Usuario implements Serializable{
     
     private String senha;
     
-    @OneToMany
-    @JoinColumn(name = "cod_usuario")
-    private List<Faixa> faixas;
-    
-    @OneToMany
-    @JoinColumn(name = "cod_usuario")
-    private List<Album> albuns;
-    
-    @OneToMany
-    @JoinColumn(name = "cod_usuario")
-    private List<Artista> artistas;
-    
     @OneToOne
     @JoinColumn(name = "cod_perfil")
     private Perfil perfil;
@@ -80,30 +68,6 @@ public class Usuario implements Serializable{
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public List<Faixa> getFaixas() {
-        return faixas;
-    }
-
-    public void setFaixas(List<Faixa> faixas) {
-        this.faixas = faixas;
-    }
-
-    public List<Album> getAlbuns() {
-        return albuns;
-    }
-
-    public void setAlbuns(List<Album> albuns) {
-        this.albuns = albuns;
-    }
-
-    public List<Artista> getArtistas() {
-        return artistas;
-    }
-
-    public void setArtistas(List<Artista> artistas) {
-        this.artistas = artistas;
     }
 
     public Perfil getPerfil() {

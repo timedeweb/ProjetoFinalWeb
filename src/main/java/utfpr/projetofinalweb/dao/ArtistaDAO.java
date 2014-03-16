@@ -21,5 +21,8 @@ public class ArtistaDAO extends GenericDAO {
     public List<Album> encontrarAlbuns(Artista artista){
         return null;
     }
+    public List<Artista> pesquisarPorUsuario(int codUsuario){
+        return null;
+    }
 
 }

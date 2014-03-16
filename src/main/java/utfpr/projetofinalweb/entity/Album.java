@@ -11,6 +11,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -32,6 +33,10 @@ public class Album implements Serializable{
     @OneToMany
     @JoinColumn(name = "cod_album")
     private List<Faixa> faixas;
+    
+    @ManyToOne
+    @JoinColumn(name = "cod_usuario")
+    private Usuario usuario;
 
     public long getCodigo() {
         return codigo;
@@ -55,6 +60,10 @@ public class Album implements Serializable{
 
     public void setFaixas(List<Faixa> faixas) {
         this.faixas = faixas;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
     }
     
     

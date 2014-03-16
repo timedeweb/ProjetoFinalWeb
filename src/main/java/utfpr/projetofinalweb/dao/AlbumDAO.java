@@ -22,5 +22,8 @@ public class AlbumDAO extends GenericDAO {
     public List<Faixa> encontrarFaixas(Album album){
         return null;
     }
+    public List<Album> pesquisarPorUsuario(int codUsuario){
+        return null;
+    }
     
 }

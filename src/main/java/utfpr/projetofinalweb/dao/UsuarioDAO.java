@@ -20,14 +20,5 @@ public class UsuarioDAO extends GenericDAO {
     public List<Usuario> pesquisarPorNome(String nome){
         return null;
     }
-    public List<Faixa> encontrarFaixas(Usuario usuario){
-        return null;
-    }
-    public List<Artista> encontrarArtistas(Usuario usuario){
-        return null;
-    }
-    public List<Album> encontrarAlbuns(Usuario usuario){
-        return null;
-    }
 
 }

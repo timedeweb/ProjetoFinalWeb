@@ -8,6 +8,8 @@ package utfpr.projetofinalweb.entity;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
@@ -30,6 +32,10 @@ public class Faixa implements Serializable {
     private String titulo;
 
     private int duracao;
+    
+    @ManyToOne
+    @JoinColumn(name = "cod_usuario")
+    private Usuario usuario;
 
     public long getCodigo() {
         return codigo;
@@ -61,6 +67,14 @@ public class Faixa implements Serializable {
 
     public void setDuracao(int duracao) {
         this.duracao = duracao;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
 }

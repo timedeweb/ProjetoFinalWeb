@@ -17,5 +17,8 @@ public class FaixaDAO extends GenericDAO {
     public List<Faixa> pesquisarPorNome(String nome){
         return null;
     }
+    public List<Faixa> pesquisarPorUsuario(int codUsuario){
+        return null;
+    }
 
 }
