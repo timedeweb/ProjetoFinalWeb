@@ -23,6 +23,8 @@ public class UsuarioBean extends PageBean {
     private Usuario usuario = new Usuario();
     
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
+    
+    private boolean logado;
 
     public Usuario getUsuario() {
         return usuario;
