@@ -6,9 +6,12 @@
 
 package utfpr.projetofinalweb.view;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import utfpr.projetofinalweb.dao.UsuarioDAO;
+import utfpr.projetofinalweb.entity.Perfil;
 import utfpr.projetofinalweb.entity.Usuario;
 import utfpr.projetofinalweb.support.PageBean;
 
@@ -23,8 +26,6 @@ public class UsuarioBean extends PageBean {
     private Usuario usuario = new Usuario();
     
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
-    
-    private boolean logado;
 
     public Usuario getUsuario() {
         return usuario;
@@ -45,7 +46,14 @@ public class UsuarioBean extends PageBean {
     public String excluir() {
         return "";
     }
-    public String cadastrar(){
+    public String cadastrar() throws NoSuchAlgorithmException{
+        Perfil perfil = new Perfil();
+        perfil.setCodigo(1);
+        perfil.setDescricao("colaborador");
+        usuario.setPerfil(perfil);
+        MessageDigest md = MessageDigest.getInstance("SHA");
+        usuario.setSenha(String.valueOf(md.digest(usuario.getSenha().getBytes())));
+        usuarioDAO.inserir(usuario);
         return "";
     }
     public String alterar() {

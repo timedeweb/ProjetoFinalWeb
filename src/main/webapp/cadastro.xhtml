@@ -1,16 +1,60 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ice="http://www.icesoft.com/icefaces/component"
+                xmlns:ace="http://www.icefaces.org/icefaces/components"
+                template="./WEB-INF/templates/layout.xhtml">
+
+    <ui:define name="styles">
+        <style type="text/css">
+            .titulo-form {
+                font-size: 14pt;
+                font-weight: bold;
+                margin: 10px 0;
+            }
+            .iceOutLbl {
+                display: inline-block;
+                margin-left: 4px;
+                width: 50px;
+            }
+            
+            .icePnlGrp {
+                margin-top: 4px;
+            }
+        </style>
+    </ui:define>
+    
+    <ui:define name="metadata">
+    </ui:define>
+
+    <ui:define name="javascript">
+    </ui:define>
+
+    <ui:define name="content">
+        <ice:form>
+            <div class="titulo-form">Inscrição de usuário</div>
+            <ice:panelGroup style="text-align: left; margin-bottom: 10px;">
+                <ice:panelGroup styleClass="form-block" layout="block">
+                    <ice:outputLabel for="nome" value="Nome"/>
+                    <ice:inputText id="nome" value="#{usuarioBean.usuario.nome}" size="80"
+                          label="Nome" maxlength="200" required="true" requiredMessage="*"/>
+                </ice:panelGroup>
+                <ice:panelGroup styleClass="form-block" layout="block">
+                    <ice:outputLabel for="email" value="E-mail"/>
+                    <ice:inputText id="email" value="#{usuarioBean.usuario.email}" size="80"
+                          label="E-mail" maxlength="200" required="true" requiredMessage="*"/>
+                </ice:panelGroup>
+                <ice:panelGroup styleClass="form-block" layout="block">
+                    <ice:outputLabel for="senha" value="Senha"/>
+                    <ice:inputText id="senha" value="#{usuarioBean.usuario.senha}" size="80"
+                                   label="Senha" maxlength="12" required="true" requiredMessage="*"/>
+                </ice:panelGroup>
+            </ice:panelGroup>
+            <ice:commandButton value="Confirmar Inscrição" action="#{usuarioBean.cadastrar}" style="margin-top: 1em"/>
+            <ice:messages/>
+        </ice:form>
+    </ui:define>
+
+</ui:composition>

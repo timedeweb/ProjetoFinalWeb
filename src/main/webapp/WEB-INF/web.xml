@@ -49,7 +49,6 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>login.xhtml</welcome-file>
-        <welcome-file>inscricao.xhtml</welcome-file>
     </welcome-file-list>
     <login-config>
         <auth-method>FORM</auth-method>

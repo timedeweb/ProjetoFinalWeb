@@ -17,7 +17,7 @@
     <Realm className="org.apache.catalina.realm.LockOutRealm">
         <Realm className="org.apache.catalina.realm.JDBCRealm"
                driverName="org.postgresql.Driver"
-               connectionURL="jdbc:postgresql://localhost:5432/projetofinalweb"
+               connectionURL="jdbc:postgresql://localhost:5432/projetofinalweb?user=postgres&amp;password=nick"
                userTable="usuario"
                userNameCol="email"
                userCredCol="senha"
