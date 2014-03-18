@@ -5,13 +5,16 @@
  */
 package utfpr.projetofinalweb.dao;
 
+import java.io.Serializable;
 import javax.persistence.EntityManager;
 
 /**
  *
  * @author Samsung
  */
-public class GenericDAO extends JpaController{
+public class GenericDAO extends JpaController implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     
     private EntityManager em;
 

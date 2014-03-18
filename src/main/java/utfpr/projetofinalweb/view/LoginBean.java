@@ -6,6 +6,7 @@
 
 package utfpr.projetofinalweb.view;
 
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.servlet.ServletException;
@@ -18,7 +19,9 @@ import utfpr.projetofinalweb.support.RequestBean;
  */
 @ManagedBean
 @RequestScoped
-public class LoginBean extends RequestBean {
+public class LoginBean extends RequestBean implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     
     private String login;
     private String senha;

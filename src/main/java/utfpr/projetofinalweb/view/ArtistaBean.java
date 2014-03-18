@@ -5,6 +5,7 @@
  */
 package utfpr.projetofinalweb.view;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.ManagedBean;
@@ -19,7 +20,9 @@ import utfpr.projetofinalweb.support.PageBean;
  */
 @ManagedBean
 @SessionScoped
-public class ArtistaBean extends PageBean {
+public class ArtistaBean extends PageBean implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     //private AlbumBean albumBean;
     private List<Artista> artistas = new ArrayList<>();

@@ -6,6 +6,7 @@
 
 package utfpr.projetofinalweb.dao;
 
+import java.io.Serializable;
 import java.util.List;
 import utfpr.projetofinalweb.entity.Album;
 import utfpr.projetofinalweb.entity.Faixa;
@@ -14,7 +15,9 @@ import utfpr.projetofinalweb.entity.Faixa;
  *
  * @author Samsung
  */
-public class AlbumDAO extends GenericDAO {
+public class AlbumDAO extends GenericDAO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     
     public List<Album> pesquisarPorNome(String nome){
         return null;

@@ -6,6 +6,7 @@
 
 package utfpr.projetofinalweb.view;
 
+import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import javax.faces.bean.ManagedBean;
@@ -22,7 +23,9 @@ import utfpr.projetofinalweb.support.PageBean;
  */
 @ManagedBean
 @SessionScoped
-public class UsuarioBean extends PageBean {
+public class UsuarioBean extends PageBean implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     
     private Usuario usuario = new Usuario();
     

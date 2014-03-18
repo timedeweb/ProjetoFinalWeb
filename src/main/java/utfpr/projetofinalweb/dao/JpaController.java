@@ -5,6 +5,7 @@
 
 package utfpr.projetofinalweb.dao;
 
+import java.io.Serializable;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -16,7 +17,10 @@ import javax.persistence.Persistence;
  * @author Wilson Horstmeyer Bogado <wilson@utfpr.edu.br>
  * <a href="http://www.utfpr.edu.br">Universidade Tecnológica Federal do Paraná</a>
  */
-public class JpaController {
+public class JpaController implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    
     protected static EntityManagerFactory emf = null;
 
     public JpaController() {

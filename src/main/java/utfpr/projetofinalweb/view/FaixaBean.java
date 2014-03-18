@@ -5,6 +5,7 @@
  */
 package utfpr.projetofinalweb.view;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -19,7 +20,9 @@ import utfpr.projetofinalweb.support.PageBean;
  */
 @ManagedBean
 @SessionScoped
-public class FaixaBean extends PageBean {
+public class FaixaBean extends PageBean implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private Faixa faixa = new Faixa();
 
