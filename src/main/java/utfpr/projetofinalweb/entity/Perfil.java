@@ -26,8 +26,6 @@ public class Perfil implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "perfil_seq")
-    @SequenceGenerator(name = "perfil_seq", sequenceName = "perfil_seq")
     private long codigo;
 
     private String descricao;

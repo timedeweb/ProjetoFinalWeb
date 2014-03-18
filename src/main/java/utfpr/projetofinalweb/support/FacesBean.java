@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -60,6 +61,10 @@ public class FacesBean implements Serializable {
      */
     public HttpSession getSession() {
         return getSession(false);
+    }
+    
+    public HttpServletRequest getRequest() {
+        return (HttpServletRequest) getExternalContext().getRequest();
     }
     
     /**

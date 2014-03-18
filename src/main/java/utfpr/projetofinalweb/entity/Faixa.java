@@ -41,6 +41,10 @@ public class Faixa implements Serializable {
     @ManyToOne
     @JoinColumn(name = "cod_usuario")
     private Usuario usuario;
+    
+    @ManyToOne
+    @JoinColumn(name = "cod_album")
+    private Album album;
 
     public long getCodigo() {
         return codigo;
@@ -81,5 +85,14 @@ public class Faixa implements Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    public Album getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
+    
 
 }

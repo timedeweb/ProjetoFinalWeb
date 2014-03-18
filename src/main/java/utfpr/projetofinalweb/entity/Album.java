@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package utfpr.projetofinalweb.entity;
 
 import java.io.Serializable;
@@ -24,24 +23,29 @@ import javax.persistence.SequenceGenerator;
  * @author Samsung
  */
 @Entity
-@NamedQueries({ 
- @NamedQuery(name = "Album.findAll", query = "SELECT a FROM Album a")})
-public class Album implements Serializable{
+@NamedQueries({
+    @NamedQuery(name = "Album.findAll", query = "SELECT a FROM Album a")})
+public class Album implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "album_seq")
     @SequenceGenerator(name = "album_seq", sequenceName = "album_seq")
     private long codigo;
-    
+
     private String titulo;
-    
+
     @OneToMany
     @JoinColumn(name = "cod_album")
     private List<Faixa> faixas;
-    
+
     @ManyToOne
     @JoinColumn(name = "cod_usuario")
     private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "cod_artista")
+    private Artista artista;
 
     public long getCodigo() {
         return codigo;
@@ -70,6 +74,13 @@ public class Album implements Serializable{
     public Usuario getUsuario() {
         return usuario;
     }
-    
-    
+
+    public Artista getArtista() {
+        return artista;
+    }
+
+    public void setArtista(Artista artista) {
+        this.artista = artista;
+    }
+
 }

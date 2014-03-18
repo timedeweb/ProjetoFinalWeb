@@ -10,6 +10,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.xml.bind.DatatypeConverter;
 import utfpr.projetofinalweb.dao.UsuarioDAO;
 import utfpr.projetofinalweb.entity.Perfil;
 import utfpr.projetofinalweb.entity.Usuario;
@@ -52,7 +53,7 @@ public class UsuarioBean extends PageBean {
         perfil.setDescricao("colaborador");
         usuario.setPerfil(perfil);
         MessageDigest md = MessageDigest.getInstance("SHA");
-        usuario.setSenha(String.valueOf(md.digest(usuario.getSenha().getBytes())));
+        usuario.setSenha(DatatypeConverter.printHexBinary(md.digest(usuario.getSenha().getBytes())));
         usuarioDAO.inserir(usuario);
         return "";
     }
