@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import utfpr.projetofinalweb.dao.AlbumDAO;
 import utfpr.projetofinalweb.dao.ArtistaDAO;
 import utfpr.projetofinalweb.entity.Artista;
 import utfpr.projetofinalweb.support.PageBean;
@@ -28,6 +29,8 @@ public class ArtistaBean extends PageBean implements Serializable {
     private List<Artista> artistas = new ArrayList<>();
 
     private ArtistaDAO artistaDAO = new ArtistaDAO();
+
+    private AlbumDAO albumDAO = new AlbumDAO();
 
     private String nomePesquisa = "";
 
@@ -67,6 +70,23 @@ public class ArtistaBean extends PageBean implements Serializable {
         this.artista = artista;
     }
 
+    public AlbumDAO getAlbumDAO() {
+        return albumDAO;
+    }
+
+    public void setAlbumDAO(AlbumDAO albumDAO) {
+        this.albumDAO = albumDAO;
+    }
+
+    public AlbumBean getAlbumBean() {
+        return albumBean;
+    }
+
+    public void setAlbumBean(AlbumBean albumBean) {
+        this.albumBean = albumBean;
+    }
+    
+
     public String pesquisarPorNome() {
         artistas = artistaDAO.pesquisarPorNome(nomePesquisa);
         return "";
@@ -85,7 +105,7 @@ public class ArtistaBean extends PageBean implements Serializable {
     }
 
     public String listarAlbuns() {
-        albumBean.setAlbuns(artistaDAO.encontrarAlbuns(artista));
+        albumBean.setAlbuns(albumDAO.pesquisarPorArtista(artista.getCodigo()));
         return "album";
     }
 

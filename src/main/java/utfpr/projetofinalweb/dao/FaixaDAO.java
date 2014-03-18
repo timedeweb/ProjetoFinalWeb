@@ -20,7 +20,10 @@ public class FaixaDAO extends GenericDAO implements Serializable {
     public List<Faixa> pesquisarPorNome(String nome){
         return null;
     }
-    public List<Faixa> pesquisarPorUsuario(int codUsuario){
+    public List<Faixa> pesquisarPorUsuario(long codUsuario){
+        return null;
+    }
+    public List<Faixa> pesquisarPorAlbum(long codAlbum) {
         return null;
     }
 

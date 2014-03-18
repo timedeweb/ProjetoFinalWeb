@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package utfpr.projetofinalweb.dao;
 
 import java.io.Serializable;
@@ -18,15 +17,21 @@ import utfpr.projetofinalweb.entity.Faixa;
 public class AlbumDAO extends GenericDAO implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
-    public List<Album> pesquisarPorNome(String nome){
+
+    public List<Album> pesquisarPorNome(String nome) {
         return null;
     }
-    public List<Faixa> encontrarFaixas(Album album){
+
+    public List<Faixa> encontrarFaixas(Album album) {
         return null;
     }
-    public List<Album> pesquisarPorUsuario(int codUsuario){
+
+    public List<Album> pesquisarPorUsuario(long codUsuario) {
         return null;
     }
-    
+
+    public List<Album> pesquisarPorArtista(long codArtista) {
+        return null;
+    }
+
 }

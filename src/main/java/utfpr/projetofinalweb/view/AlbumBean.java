@@ -11,6 +11,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import utfpr.projetofinalweb.dao.AlbumDAO;
+import utfpr.projetofinalweb.dao.FaixaDAO;
 import utfpr.projetofinalweb.entity.Album;
 import utfpr.projetofinalweb.support.PageBean;
 
@@ -29,6 +30,8 @@ public class AlbumBean extends PageBean implements Serializable {
     private Album album = new Album();
 
     private AlbumDAO albumDAO = new AlbumDAO();
+    
+    private FaixaDAO faixaDAO = new FaixaDAO();
 
     private FaixaBean faixaBean = (FaixaBean) getBean("faixaBean");
 
@@ -74,6 +77,14 @@ public class AlbumBean extends PageBean implements Serializable {
         this.nomePesquisa = nomePesquisa;
     }
 
+    public FaixaDAO getFaixaDAO() {
+        return faixaDAO;
+    }
+
+    public void setFaixaDAO(FaixaDAO faixaDAO) {
+        this.faixaDAO = faixaDAO;
+    }
+
     public String pesquisarPorNome() {
         albuns = albumDAO.pesquisarPorNome(nomePesquisa);
         return "";
@@ -92,7 +103,7 @@ public class AlbumBean extends PageBean implements Serializable {
     }
 
     public String listarFaixas() {
-        faixaBean.setFaixas(albumDAO.encontrarFaixas(album));
+        faixaBean.setFaixas(faixaDAO.pesquisarPorAlbum(album.getCodigo()));
         return "faixas";
     }
 }

@@ -24,7 +24,7 @@ public class ArtistaDAO extends GenericDAO implements Serializable {
     public List<Album> encontrarAlbuns(Artista artista){
         return null;
     }
-    public List<Artista> pesquisarPorUsuario(int codUsuario){
+    public List<Artista> pesquisarPorUsuario(long codUsuario){
         return null;
     }
 
