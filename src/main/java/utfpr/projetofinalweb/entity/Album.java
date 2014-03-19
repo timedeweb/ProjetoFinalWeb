@@ -30,7 +30,7 @@ public class Album implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "album_seq")
-    @SequenceGenerator(name = "album_seq", sequenceName = "album_seq")
+    @SequenceGenerator(name = "album_seq", sequenceName = "album_seq", allocationSize = 1)
     private long codigo;
 
     private String titulo;

@@ -21,7 +21,7 @@
                userTable="usuario"
                userNameCol="email"
                userCredCol="senha"
-               userRoleTable="perfil"
+               userRoleTable="usuarioperfil"
                roleNameCol="descricao"
                digest="SHA"
         />

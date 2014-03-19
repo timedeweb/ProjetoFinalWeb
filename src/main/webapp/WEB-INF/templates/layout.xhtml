@@ -11,10 +11,8 @@
         <h:head>
             <ui:insert name="styles"/>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-            <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"/>
-            <link href="./css/default.css" rel="stylesheet" type="text/css" />
-            <link href="./css/cssLayout.css" rel="stylesheet" type="text/css" />
-            <link href="./css/inscricao.css" rel="stylesheet" type="text/css" />
+            <link rel="stylesheet" type="text/css" href="${facesContext.externalContext.requestContextPath}/xmlhttp/css/rime/rime.css"/>
+            <link href="${facesContext.externalContext.requestContextPath}/css/default.css" rel="stylesheet" type="text/css" />
             <title>IF6AE - Ficha de Inscrição v2</title>
         </h:head>
 
@@ -25,7 +23,7 @@
                     <td class="left_filler"/>
                     <td id="top">
                         <ui:insert name="top">
-                           <a href="http://www.ct.utfpr.edu.br" target="_blank"><img src="imagens/header.jpg" alt=""/></a>
+                           <a href="http://www.ct.utfpr.edu.br" target="_blank"><img src="${facesContext.externalContext.requestContextPath}/imagens/header.jpg" alt=""/></a>
                         </ui:insert>
                     </td>
                     <td class="right_filler"/>
