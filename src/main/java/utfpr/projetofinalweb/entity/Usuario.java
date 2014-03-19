@@ -15,7 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 
 /**
  *
@@ -28,7 +27,7 @@ public class Usuario implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_seq")
-    @SequenceGenerator(name = "usuario_seq", sequenceName = "usuario_seq")
+   
     private long codigo;
     
     private String nome;
