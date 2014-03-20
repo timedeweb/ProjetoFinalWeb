@@ -713,15 +713,14 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     $items.eq(index).focus()
   }
 
-  function clearMenus(e) {
+  function clearMenus() {
     $(backdrop).remove()
-    $(toggle).each(function () {
+    $(toggle).each(function (e) {
       var $parent = getParent($(this))
-      var relatedTarget = { relatedTarget: this }
       if (!$parent.hasClass('open')) return
-      $parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
+      $parent.trigger(e = $.Event('bs.dropdown'))
       if (e.isDefaultPrevented()) return
-      $parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
+      $parent.removeClass('open')
     })
   }
 
