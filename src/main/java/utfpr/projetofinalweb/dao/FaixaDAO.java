@@ -26,5 +26,8 @@ public class FaixaDAO extends GenericDAO implements Serializable {
     public List<Faixa> pesquisarPorAlbum(long codAlbum) {
         return null;
     }
+    public List<Faixa> listar() {
+        return null;
+    }
 
 }

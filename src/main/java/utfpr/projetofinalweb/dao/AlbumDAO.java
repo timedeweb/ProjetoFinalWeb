@@ -8,7 +8,6 @@ package utfpr.projetofinalweb.dao;
 import java.io.Serializable;
 import java.util.List;
 import utfpr.projetofinalweb.entity.Album;
-import utfpr.projetofinalweb.entity.Faixa;
 
 /**
  *
@@ -22,15 +21,14 @@ public class AlbumDAO extends GenericDAO implements Serializable {
         return null;
     }
 
-    public List<Faixa> encontrarFaixas(Album album) {
-        return null;
-    }
-
     public List<Album> pesquisarPorUsuario(long codUsuario) {
         return null;
     }
 
     public List<Album> pesquisarPorArtista(long codArtista) {
+        return null;
+    }
+    public List<Album> listar(){
         return null;
     }
 

@@ -10,9 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.model.SelectItem;
 import utfpr.projetofinalweb.dao.AlbumDAO;
 import utfpr.projetofinalweb.dao.FaixaDAO;
 import utfpr.projetofinalweb.entity.Album;
+import utfpr.projetofinalweb.entity.Artista;
 import utfpr.projetofinalweb.support.PageBean;
 
 /**
@@ -26,6 +28,10 @@ public class AlbumBean extends PageBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private List<Album> albuns = new ArrayList<>();
+    
+    private List<Artista> artistas = new ArrayList<>();
+    
+    private List<SelectItem> listaArtistas = new ArrayList<>();
 
     private Album album = new Album();
 
@@ -45,6 +51,22 @@ public class AlbumBean extends PageBean implements Serializable {
         this.albuns = albuns;
     }
 
+    public List<Artista> getArtistas() {
+        return artistas;
+    }
+
+    public void setArtistas(List<Artista> artistas) {
+        this.artistas = artistas;
+    }
+
+    public List<SelectItem> getListaArtistas() {
+        return listaArtistas;
+    }
+
+    public void setListaArtistas(List<SelectItem> listaArtistas) {
+        this.listaArtistas = listaArtistas;
+    }
+    
     public Album getAlbum() {
         return album;
     }
@@ -52,7 +74,7 @@ public class AlbumBean extends PageBean implements Serializable {
     public void setAlbum(Album album) {
         this.album = album;
     }
-
+    
     public AlbumDAO getAlbumDAO() {
         return albumDAO;
     }

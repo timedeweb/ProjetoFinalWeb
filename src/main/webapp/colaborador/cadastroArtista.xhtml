@@ -5,7 +5,7 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ice="http://www.icesoft.com/icefaces/component"
                 xmlns:ace="http://www.icefaces.org/icefaces/components"
-                template="./WEB-INF/templates/layout.xhtml">
+                template="/WEB-INF/templates/layout.xhtml">
 
     <ui:define name="styles">
         <style type="text/css">
@@ -33,7 +33,7 @@
     </ui:define>
     
     <ui:define name="top">
-        <h3>Inscrição de usuário</h3>
+        <h3>Cadastro de Artista</h3>
     </ui:define>
 
     <ui:define name="content">
@@ -41,21 +41,11 @@
             <ice:panelGroup>
                 <ice:panelGroup styleClass="form-block" layout="block">
                     <ice:outputLabel for="nome" value="Nome"/>
-                    <ace:textEntry id="nome" value="#{usuarioBean.usuario.nome}" size="80"
+                    <ace:textEntry id="nome" value="#{artistaBean.artista.nome}" size="80"
                         label="Nome" maxlength="200" required="true" requiredMessage="O campo nome é obrigatório" requiredIndicator="*"/>
                 </ice:panelGroup>
-                <ice:panelGroup styleClass="form-block" layout="block">
-                    <ice:outputLabel for="email" value="E-mail"/>
-                     <ace:textEntry id="email" value="#{usuarioBean.usuario.email}" size="80"
-                          label="E-mail" maxlength="200" required="true" requiredMessage="O campo email é obrigatório" requiredIndicator="*"/>
-                </ice:panelGroup>
-                <ice:panelGroup styleClass="form-block" layout="block">
-                    <ice:outputLabel for="senha" value="Senha"/>
-                    <ace:textEntry id="senha" value="#{usuarioBean.usuario.senha}" size="80"
-                                    maxlength="12" requiredMessage="O campo senha é obrigatório" required="true" requiredIndicator="*"/>
-                </ice:panelGroup>
             </ice:panelGroup>
-            <ice:commandButton styleClass="btn btn-primary" value="Confirmar Inscrição" action="#{usuarioBean.cadastrar}" style="margin-top: 1em; margin-left: 55px;"/>
+            <ice:commandButton styleClass="btn btn-primary" value="Cadastrar" action="#{artistaBean.cadastrar}" style="margin-top: 1em; margin-left: 55px;"/>
             <ice:messages/>
 
         </ice:form>

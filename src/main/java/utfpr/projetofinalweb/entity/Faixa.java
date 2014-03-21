@@ -28,7 +28,6 @@ public class Faixa implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "faixa_seq")
-    
     private long codigo;
 
     private int numero;

@@ -97,6 +97,7 @@ public class ArtistaBean extends PageBean implements Serializable {
     }
 
     public String cadastrar() {
+        this.cadastrar();
         return "";
     }
 

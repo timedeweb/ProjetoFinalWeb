@@ -7,7 +7,6 @@ package utfpr.projetofinalweb.dao;
 
 import java.io.Serializable;
 import java.util.List;
-import utfpr.projetofinalweb.entity.Album;
 import utfpr.projetofinalweb.entity.Artista;
 
 /**
@@ -21,11 +20,10 @@ public class ArtistaDAO extends GenericDAO implements Serializable {
     public List<Artista> pesquisarPorNome(String nome){
         return null;
     }
-    public List<Album> encontrarAlbuns(Artista artista){
-        return null;
-    }
     public List<Artista> pesquisarPorUsuario(long codUsuario){
         return null;
     }
-
+    public List<Artista> listar(){
+        return null;
+    }
 }

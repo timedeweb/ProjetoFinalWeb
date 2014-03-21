@@ -27,6 +27,8 @@ public class UsuarioBean extends PageBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
+    private Usuario usuarioLogado;
+    
     private Usuario usuario = new Usuario();
     
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
@@ -63,5 +65,14 @@ public class UsuarioBean extends PageBean implements Serializable {
     public String alterar() {
         return "";
     }
+
+    public Usuario getUsuarioLogado() {
+        return usuarioLogado;
+    }
+
+    public void setUsuarioLogado(Usuario usuarioLogado) {
+        this.usuarioLogado = usuarioLogado;
+    }
+    
     
 }
