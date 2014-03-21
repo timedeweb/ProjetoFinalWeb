@@ -6,9 +6,8 @@
 package utfpr.projetofinalweb.view;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.ManagedBean;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import utfpr.projetofinalweb.dao.AlbumDAO;
 import utfpr.projetofinalweb.dao.ArtistaDAO;
@@ -25,12 +24,11 @@ public class ArtistaBean extends PageBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    //private AlbumBean albumBean;
-    private List<Artista> artistas = new ArrayList<>();
-
     private ArtistaDAO artistaDAO = new ArtistaDAO();
 
     private AlbumDAO albumDAO = new AlbumDAO();
+    
+    private List<Artista> artistas = artistaDAO.listar();
 
     private String nomePesquisa = "";
 
@@ -108,6 +106,10 @@ public class ArtistaBean extends PageBean implements Serializable {
     public String listarAlbuns() {
         albumBean.setAlbuns(albumDAO.pesquisarPorArtista(artista.getCodigo()));
         return "album";
+    }
+    public String listarAlbunsColaborador(int codColaborador){
+        this.artistas = this.artistaDAO.pesquisarPorUsuario(codColaborador);
+        return "colaborador/artistas";
     }
 
 }

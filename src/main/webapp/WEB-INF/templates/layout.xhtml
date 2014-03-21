@@ -12,49 +12,54 @@
             <ui:insert name="styles"/>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             <title>IF6AE - Music Database</title>
-            
-            <!--<link rel="stylesheet" type="text/css" href="${facesContext.externalContext.requestContextPath}/xmlhttp/css/rime/rime.css"/>-->
+
+<!--<link rel="stylesheet" type="text/css" href="${facesContext.externalContext.requestContextPath}/xmlhttp/css/rime/rime.css"/>-->
             <link href="${facesContext.externalContext.requestContextPath}/assets/css/bootstrap.css" rel="stylesheet" type="text/css" />            
-            
+
         </h:head>
 
         <h:body>
             <ui:insert name="javascript"/>
-            
-            <div class="navbar navbar-default" role="navigation">
-                <div class="container">
-                  <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Music Database</a>
-                  </div>
-                  <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        
-                        
-                        <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opções <b class="caret"></b></a>
-                          <ul class="dropdown-menu">
-                            <li><a href="#">Opção 1</a></li>
-                            <li><a href="#">Opção 2</a></li>
-                            <li><a href="#">Opção 3</a></li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Header seção menu</li>
-                            <li><a href="#">Opção 4</a></li>
-                            <li><a href="#">Opção 5</a></li>
-                          </ul>
-                        </li>
+            <h:form>
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">Music Database</a>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
 
-                        <li><a href="#">Opção 6</a></li>
-                        <li><a href="#">Opção 7</a></li>
-
-                    </ul>
-                  </div><!--/.nav-collapse -->
+                                <li><a href="#">Artistas</a></li>
+                                <li><a href="#">Álbums</a></li>
+                                <li><a href="#">Faixas</a></li>
+                                <li><a href="#">Cadastro</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Área de colaborador <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><h:commandLink action="#{artistaBean.listarAlbunsColaborador(1)}" value="Meus Artistas"/></li>
+                                        <li><h:commandLink action="#" value="Meus Álbuns"/></li>
+                                        <li><a href="#">Minhas Faixas</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Área de administrador <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Artistas</a></li>
+                                        <li><a href="#">Álbums</a></li>
+                                        <li><a href="#">Faixas</a></li>
+                                        <li><a href="#">Usuários</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                    </div>
                 </div>
-              </div>
-            
-              <div class="container">
-		<div class="row">
+            </h:form>
+
+            <div class="container">
+                <div class="row">
                     <ui:insert name="top"><h3>Título</h3></ui:insert>
-		</div>
+                </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="well">
@@ -62,16 +67,16 @@
                         </div>
                     </div>
                 </div>
-                  <div class="row">
-                      <ui:insert name="bottom">
-                            Projeto Final de Desenvolvimento Web 
-                      </ui:insert>
-                  </div>
-              </div>
-            
+                <div class="row">
+                    <ui:insert name="bottom">
+                        Projeto Final de Desenvolvimento Web 
+                    </ui:insert>
+                </div>
+            </div>
+
             <script src="${facesContext.externalContext.requestContextPath}/assets/js/jquery.js"></script>
             <script src="${facesContext.externalContext.requestContextPath}/assets/js/bootstrap.js"></script>
-                
+
         </h:body>
     </f:view>
 </html>
