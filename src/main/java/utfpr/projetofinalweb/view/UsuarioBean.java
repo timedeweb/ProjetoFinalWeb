@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package utfpr.projetofinalweb.view;
 
 import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.xml.bind.DatatypeConverter;
@@ -26,12 +27,22 @@ import utfpr.projetofinalweb.support.PageBean;
 public class UsuarioBean extends PageBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     private Usuario usuarioLogado;
-    
+
     private Usuario usuario = new Usuario();
-    
+
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
+
+    private List<Usuario> usuarios = usuarioDAO.listar();
+
+    public Usuario getUsuarioLogado() {
+        return usuarioLogado;
+    }
+
+    public void setUsuarioLogado(Usuario usuarioLogado) {
+        this.usuarioLogado = usuarioLogado;
+    }
 
     public Usuario getUsuario() {
         return usuario;
@@ -45,14 +56,23 @@ public class UsuarioBean extends PageBean implements Serializable {
         return usuarioDAO;
     }
 
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
     public void setUsuarioDAO(UsuarioDAO usuarioDAO) {
         this.usuarioDAO = usuarioDAO;
     }
 
-    public String excluir() {
+    public String excluir(int usuarioId) {
         return "";
     }
-    public String cadastrar() throws NoSuchAlgorithmException{
+
+    public String cadastrar() throws NoSuchAlgorithmException {
         Perfil perfil = new Perfil();
         perfil.setCodigo(1);
         perfil.setDescricao("colaborador");
@@ -62,17 +82,9 @@ public class UsuarioBean extends PageBean implements Serializable {
         usuarioDAO.inserir(usuario);
         return "";
     }
-    public String alterar() {
+
+    public String alterar(int usuarioId) {
         return "";
     }
 
-    public Usuario getUsuarioLogado() {
-        return usuarioLogado;
-    }
-
-    public void setUsuarioLogado(Usuario usuarioLogado) {
-        this.usuarioLogado = usuarioLogado;
-    }
-    
-    
 }

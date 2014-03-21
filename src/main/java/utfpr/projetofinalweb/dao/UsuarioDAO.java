@@ -7,6 +7,7 @@ package utfpr.projetofinalweb.dao;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Query;
 import utfpr.projetofinalweb.entity.Usuario;
 
 /**
@@ -16,12 +17,15 @@ import utfpr.projetofinalweb.entity.Usuario;
 public class UsuarioDAO extends GenericDAO implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
-    public List<Usuario> pesquisarPorNome(String nome){
+
+    public List<Usuario> pesquisarPorNome(String nome) {
         return null;
     }
-    public List<Usuario> listar(){
-        return null;
+
+    public List<Usuario> listar() {
+        em = getEntityManager();
+        Query q = em.createNamedQuery("Usuario.findAll");
+        return q.getResultList();
     }
 
 }

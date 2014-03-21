@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package utfpr.projetofinalweb.entity;
 
 import java.io.Serializable;
@@ -15,27 +14,29 @@ import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
 /**
  *
  * @author Samsung
  */
 @Entity
-@NamedQueries({ 
- @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")})
-public class Usuario implements Serializable{
+@NamedQueries({
+    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")})
+public class Usuario implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_seq")
-   
+    @SequenceGenerator(name = "usuario_seq", sequenceName = "usuario_seq", allocationSize = 1)
     private long codigo;
-    
+
     private String nome;
-    
+
     private String email;
-    
+
     private String senha;
-    
+
     @OneToOne
     @JoinColumn(name = "cod_perfil")
     private Perfil perfil;
@@ -79,7 +80,5 @@ public class Usuario implements Serializable{
     public void setPerfil(Perfil perfil) {
         this.perfil = perfil;
     }
-    
-    
-    
+
 }

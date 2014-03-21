@@ -5,36 +5,46 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ice="http://www.icesoft.com/icefaces/component"
                 xmlns:ace="http://www.icefaces.org/icefaces/components"
-                template="./WEB-INF/templates/layout.xhtml">
+                template="/WEB-INF/templates/layout.xhtml">
 
     <ui:define name="styles">
     </ui:define>
-    
+
     <ui:define name="metadata">
     </ui:define>
 
     <ui:define name="javascript">
     </ui:define>
-    
+
     <ui:define name="top">
         <h3>Usuários cadastrados</h3>
     </ui:define>
 
     <ui:define name="content">
-         <!--<ice:form>
-            <ace:dataTable value="#{testeBean.dataModel}"
-                           var="idioma"
+        <ice:form>
+            <ace:dataTable value="#{usuarioBean.usuarios}"
+                           var="usuario"
                            paginator="true"
                            paginatorPosition="bottom"
                            rows="10">
-                <ace:column headerText="Código" sortBy="#{idioma.codigo}">
-                    <ice:outputText value="#{idioma.codigo}"/>
+                <ace:column headerText="Código" sortBy="#{usuario.codigo}">
+                    <ice:outputText value="#{usuario.codigo}"/>
                 </ace:column>
-                <ace:column headerText="Descrição" sortBy="#{idioma.descricao}">
-                    <ice:outputText value="#{idioma.descricao}"/>
+                <ace:column headerText="Nome" sortBy="#{usuario.nome}">
+                    <ice:outputText value="#{usuario.nome}"/>
+                </ace:column>
+                <ace:column headerText="E-mail" sortBy="#{usuario.email}">
+                    <ice:outputText value="#{usuario.email}"/>
+                </ace:column>
+                <ace:column headerText="Perfil" sortBy="#{usuario.perfil.descricao}">
+                    <ice:outputText value="#{usuario.perfil.descricao}"/>
+                </ace:column>
+                <ace:column headerText="Ações">
+                    <ice:commandButton value="Editar" action="#{usuarioBean.alterar(usuario.codigo)}"/>
+                    <ice:commandButton value="Excluir" action="#{usuarioBean.excluir(usuario.codigo)}"/>
                 </ace:column>
             </ace:dataTable>
-        </ice:form>-->
+        </ice:form>
     </ui:define>
 
 </ui:composition>

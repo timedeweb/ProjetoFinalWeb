@@ -11,6 +11,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import utfpr.projetofinalweb.dao.FaixaDAO;
+import utfpr.projetofinalweb.entity.Album;
 import utfpr.projetofinalweb.entity.Faixa;
 import utfpr.projetofinalweb.support.PageBean;
 
@@ -27,6 +28,8 @@ public class FaixaBean extends PageBean implements Serializable {
     private Faixa faixa = new Faixa();
 
     private List<Faixa> faixas = new ArrayList<>();
+    
+    private List<Album> albuns = new ArrayList<>();
 
     private FaixaDAO faixaDAO = new FaixaDAO();
 
@@ -48,6 +51,14 @@ public class FaixaBean extends PageBean implements Serializable {
         this.faixas = faixas;
     }
 
+    public List<Album> getAlbuns() {
+        return albuns;
+    }
+
+    public void setAlbuns(List<Album> albuns) {
+        this.albuns = albuns;
+    }
+    
     public FaixaDAO getFaixaDAO() {
         return faixaDAO;
     }

@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 
 /**
  *
@@ -28,6 +29,7 @@ public class Faixa implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "faixa_seq")
+    @SequenceGenerator(name = "faixa_seq", sequenceName = "faixa_seq", allocationSize = 1)
     private long codigo;
 
     private int numero;

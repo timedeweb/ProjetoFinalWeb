@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 /**
  *
@@ -30,6 +31,7 @@ public class Artista implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "artista_seq")
+    @SequenceGenerator(name = "artista_seq", sequenceName = "artista_seq", allocationSize = 1)
     private long codigo;
     
     private String nome;

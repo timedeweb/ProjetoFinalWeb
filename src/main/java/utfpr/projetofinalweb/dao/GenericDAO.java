@@ -15,8 +15,8 @@ import javax.persistence.EntityManager;
 public class GenericDAO extends JpaController implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
-    private EntityManager em;
+
+    protected EntityManager em;
 
     public void inserir(Object objeto) {
         em = this.getEntityManager();
@@ -42,5 +42,5 @@ public class GenericDAO extends JpaController implements Serializable {
         em.getTransaction().commit();
         em.close();
     }
-        
+
 }
