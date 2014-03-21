@@ -107,9 +107,9 @@ public class ArtistaBean extends PageBean implements Serializable {
         albumBean.setAlbuns(albumDAO.pesquisarPorArtista(artista.getCodigo()));
         return "album";
     }
-    public String listarAlbunsColaborador(int codColaborador){
+    public String listarColaborador(int codColaborador){
         this.artistas = this.artistaDAO.pesquisarPorUsuario(codColaborador);
-        return "colaborador/artistas";
+        return "colaborador/artistas?redirect=true";
     }
 
 }

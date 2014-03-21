@@ -28,9 +28,11 @@ public class UsuarioBean extends PageBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Usuario usuarioLogado;
+    private Usuario usuarioLogado = new Usuario();
 
     private Usuario usuario = new Usuario();
+    
+    //${facesContext.externalContext.userPrincipal.name}
 
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
 

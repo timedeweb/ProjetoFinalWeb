@@ -27,5 +27,8 @@ public class UsuarioDAO extends GenericDAO implements Serializable {
         Query q = em.createNamedQuery("Usuario.findAll");
         return q.getResultList();
     }
+    public Usuario pesquisarPorEmail(String email){
+        return null;
+    }
 
 }
