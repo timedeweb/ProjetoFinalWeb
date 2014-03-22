@@ -6,6 +6,7 @@
 package utfpr.projetofinalweb.entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,8 +32,10 @@ public class Usuario implements Serializable {
     @SequenceGenerator(name = "usuario_seq", sequenceName = "usuario_seq", allocationSize = 1)
     private long codigo;
 
+    @Column(unique = true)
     private String nome;
 
+    @Column(unique = true)
     private String email;
 
     private String senha;

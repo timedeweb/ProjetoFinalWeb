@@ -60,7 +60,9 @@
                 </ice:panelGroup>
                 <ice:panelGroup styleClass="form-block" layout="block">
                     <ice:outputLabel for="album" value="Álbum"/>
-
+                    <h:selectOneMenu value="#{faixaBean.albumSelecionado}">
+                        <f:selectItems value="#{faixaBean.listaAlbuns}"/>
+                    </h:selectOneMenu>
                 </ice:panelGroup>
             </ice:panelGroup>
             <ice:commandButton styleClass="btn btn-primary" value="Cadastrar" action="#{faixaBean.cadastrar}" rendered="#{!faixaBean.editar}"/>

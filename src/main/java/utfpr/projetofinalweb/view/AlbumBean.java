@@ -163,7 +163,7 @@ public class AlbumBean extends PageBean implements Serializable {
             usuarioBean.setarUsuarioLogado();
         }
         album.setUsuario(usuarioBean.getUsuarioLogado());
-        artistaDAO.inserir(album);
+        albumDAO.inserir(album);
         album = new Album();
         artistaSelecionado = 0;
         return "";
