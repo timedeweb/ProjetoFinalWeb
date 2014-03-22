@@ -20,19 +20,19 @@ public class AlbumDAO extends GenericDAO implements Serializable {
     
     public List<Album> pesquisarPorNome(String nome) {
         em = getEntityManager();
-        Query q = em.createNamedQuery("select a from Album a where a.titulo like " + nome, Album.class);
+        Query q = em.createQuery("select a from Album a where a.titulo like " + nome, Album.class);
         return q.getResultList();
     }
 
     public List<Album> pesquisarPorUsuario(long codUsuario) {
         em = getEntityManager();
-        Query q = em.createNamedQuery("select a from Album a where a.usuario = " + codUsuario, Album.class);
+        Query q = em.createQuery("select a from Album a where a.usuario.codigo = " + codUsuario, Album.class);
         return q.getResultList();
     }
 
     public List<Album> pesquisarPorArtista(long codArtista) {
         em = getEntityManager();
-        Query q = em.createNamedQuery("select a from Album a where a.artista = " + codArtista, Album.class);
+        Query q = em.createQuery("select a from Album a where a.artista.codigo = " + codArtista, Album.class);
         return q.getResultList();
     }
     public List<Album> listar(){

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import utfpr.projetofinalweb.dao.AlbumDAO;
 import utfpr.projetofinalweb.dao.FaixaDAO;
 import utfpr.projetofinalweb.entity.Album;
 import utfpr.projetofinalweb.entity.Faixa;
@@ -27,11 +28,13 @@ public class FaixaBean extends PageBean implements Serializable {
 
     private Faixa faixa = new Faixa();
 
-    private List<Faixa> faixas = new ArrayList<>();
-    
-    private List<Album> albuns = new ArrayList<>();
-
     private FaixaDAO faixaDAO = new FaixaDAO();
+
+    private AlbumDAO albumDAO = new AlbumDAO();
+
+    private List<Faixa> faixas = faixaDAO.listar();
+
+    private List<Album> albuns = albumDAO.listar();
 
     private String nomePesquisa = "";
 
@@ -58,7 +61,7 @@ public class FaixaBean extends PageBean implements Serializable {
     public void setAlbuns(List<Album> albuns) {
         this.albuns = albuns;
     }
-    
+
     public FaixaDAO getFaixaDAO() {
         return faixaDAO;
     }
@@ -66,7 +69,15 @@ public class FaixaBean extends PageBean implements Serializable {
     public void setFaixaDAO(FaixaDAO faixaDAO) {
         this.faixaDAO = faixaDAO;
     }
-    
+
+    public AlbumDAO getAlbumDAO() {
+        return albumDAO;
+    }
+
+    public void setAlbumDAO(AlbumDAO albumDAO) {
+        this.albumDAO = albumDAO;
+    }
+
     public String getNomePesquisa() {
         return nomePesquisa;
     }

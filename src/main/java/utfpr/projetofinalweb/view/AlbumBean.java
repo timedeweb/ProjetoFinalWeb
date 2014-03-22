@@ -12,6 +12,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 import utfpr.projetofinalweb.dao.AlbumDAO;
+import utfpr.projetofinalweb.dao.ArtistaDAO;
 import utfpr.projetofinalweb.dao.FaixaDAO;
 import utfpr.projetofinalweb.entity.Album;
 import utfpr.projetofinalweb.entity.Artista;
@@ -27,17 +28,19 @@ public class AlbumBean extends PageBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private List<Album> albuns = new ArrayList<>();
-    
-    private List<Artista> artistas = new ArrayList<>();
-    
-    private List<SelectItem> listaArtistas = new ArrayList<>();
-
     private Album album = new Album();
 
     private AlbumDAO albumDAO = new AlbumDAO();
     
+    private ArtistaDAO artistaDAO = new ArtistaDAO();
+    
     private FaixaDAO faixaDAO = new FaixaDAO();
+    
+    private List<Album> albuns = albumDAO.listar();
+    
+    private List<Artista> artistas = artistaDAO.listar();
+    
+    private List<SelectItem> listaArtistas = new ArrayList<>();
 
     private FaixaBean faixaBean = (FaixaBean) getBean("faixaBean");
 
