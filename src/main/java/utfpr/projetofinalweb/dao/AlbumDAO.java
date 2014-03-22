@@ -7,6 +7,7 @@ package utfpr.projetofinalweb.dao;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Query;
 import utfpr.projetofinalweb.entity.Album;
 
 /**
@@ -16,20 +17,28 @@ import utfpr.projetofinalweb.entity.Album;
 public class AlbumDAO extends GenericDAO implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    
     public List<Album> pesquisarPorNome(String nome) {
-        return null;
+        em = getEntityManager();
+        Query q = em.createNamedQuery("select a from Album a where a.titulo like " + nome, Album.class);
+        return q.getResultList();
     }
 
     public List<Album> pesquisarPorUsuario(long codUsuario) {
-        return null;
+        em = getEntityManager();
+        Query q = em.createNamedQuery("select a from Album a where a.usuario = " + codUsuario, Album.class);
+        return q.getResultList();
     }
 
     public List<Album> pesquisarPorArtista(long codArtista) {
-        return null;
+        em = getEntityManager();
+        Query q = em.createNamedQuery("select a from Album a where a.artista = " + codArtista, Album.class);
+        return q.getResultList();
     }
     public List<Album> listar(){
-        return null;
+        em = getEntityManager();
+        Query q = em.createNamedQuery("Album.findAll");
+        return q.getResultList();
     }
 
 }

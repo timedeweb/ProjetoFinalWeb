@@ -19,16 +19,26 @@ public class UsuarioDAO extends GenericDAO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public List<Usuario> pesquisarPorNome(String nome) {
-        return null;
+        
+        em = getEntityManager();
+        Query q = em.createQuery("select u from Usuario u where u.nome like " + nome, Usuario.class);
+        return q.getResultList();
+        
     }
 
     public List<Usuario> listar() {
+        
         em = getEntityManager();
         Query q = em.createNamedQuery("Usuario.findAll");
         return q.getResultList();
+        
     }
     public Usuario pesquisarPorEmail(String email){
-        return null;
+        
+        em = getEntityManager();
+        Query q = em.createQuery("select u from Usuario u where u.email = " + email, Usuario.class);
+        return (Usuario) q.getSingleResult();
+        
     }
 
 }

@@ -7,6 +7,8 @@ package utfpr.projetofinalweb.dao;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Query;
+import utfpr.projetofinalweb.entity.Album;
 import utfpr.projetofinalweb.entity.Faixa;
 
 /**
@@ -18,16 +20,24 @@ public class FaixaDAO extends GenericDAO implements Serializable {
     private static final long serialVersionUID = 1L;
     
     public List<Faixa> pesquisarPorNome(String nome){
-        return null;
+        em = getEntityManager();
+        Query q = em.createNamedQuery("SELECT f FROM Faixa f WHERE f.titulo LIKE " + nome, Faixa.class);
+        return q.getResultList();
     }
     public List<Faixa> pesquisarPorUsuario(long codUsuario){
-        return null;
+        em = getEntityManager();
+        Query q = em.createNamedQuery("SELECT f FROM Faixa f WHERE f.usuario = " + codUsuario, Faixa.class);
+        return q.getResultList();
     }
     public List<Faixa> pesquisarPorAlbum(long codAlbum) {
-        return null;
+        em = getEntityManager();
+        Query q = em.createNamedQuery("SELECT f FROM Faixa f WHERE f.album = " + codAlbum, Faixa.class);
+        return q.getResultList();
     }
     public List<Faixa> listar() {
-        return null;
+        em = getEntityManager();
+        Query q = em.createNamedQuery("Faixa.findAll");
+        return q.getResultList();
     }
 
 }
