@@ -29,25 +29,18 @@
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
 
-                                <li><a href="#">Artistas</a></li>
-                                <li><a href="#">Álbums</a></li>
-                                <li><a href="#">Faixas</a></li>
-                                <li><a href="#">Cadastro</a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Área de colaborador <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><h:commandLink action="#{artistaBean.listarColaborador(1)}" value="Meus Artistas"/></li>
-                                        <li><h:commandLink action="#" value="Meus Álbuns"/></li>
-                                        <li><a href="#">Minhas Faixas</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="${facesContext.externalContext.requestContextPath}/artistas.xhtml">Artistas</a></li>
+                                <li><a href="${facesContext.externalContext.requestContextPath}/albuns.xhtml">Álbums</a></li>
+                                <li><a href="${facesContext.externalContext.requestContextPath}/faixas.xhtml">Faixas</a></li>
+                                <li><a href="${facesContext.externalContext.requestContextPath}/cadastro.xhtml">Cadastro</a></li>
+                                <li><a href="${facesContext.externalContext.requestContextPath}/colaborador/inicial.xhtml">Área de colaborador</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Área de administrador <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">Artistas</a></li>
-                                        <li><a href="#">Álbums</a></li>
-                                        <li><a href="#">Faixas</a></li>
-                                        <li><a href="#">Usuários</a></li>
+                                        <li><a href="${facesContext.externalContext.requestContextPath}/admin/artistas.xhtml">Artistas</a></li>
+                                        <li><a href="${facesContext.externalContext.requestContextPath}/admin/albuns.xhtml">Álbums</a></li>
+                                        <li><a href="${facesContext.externalContext.requestContextPath}/admin/faixas.xhtml">Faixas</a></li>
+                                        <li><a href="${facesContext.externalContext.requestContextPath}/admin/usuarios.xhtml">Usuários</a></li>
                                     </ul>
                                 </li>
                             </ul>

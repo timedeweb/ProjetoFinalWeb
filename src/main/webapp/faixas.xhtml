@@ -22,11 +22,11 @@
 
     <ui:define name="content">
         <ice:form >
-            <ice:panelGroup>
-                <ice:outputLabel for="titulo" value=""/>
-                <ace:textEntry id="titulo" value="" size="50"
-                               label="Título" maxlength="200" required="false"/>
-                <ice:commandButton value="Procurar" action="#{faixaBean.pesquisarPorNome()}" style="margin-top: 1em; margin-left: 5px;"/>
+            <ice:panelGroup styleClass="form-block">
+                <ice:inputText id="titulo" value="#{faixaBean.nomePesquisa}"  size="40"
+                               label="Título" maxlength="200" />
+                <ice:commandButton value="Pesquisar" action="#{faixaBean.pesquisarPorNome}"/>
+                <ice:commandButton value="Listar todos" action="#{faixaBean.listar}"/>
             </ice:panelGroup>
             <ice:messages/>
         </ice:form>

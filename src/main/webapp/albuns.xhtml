@@ -24,27 +24,27 @@
         <ice:form >
             <ice:panelGroup>
                 <ice:outputLabel for="titulo" value=""/>
-                <ace:textEntry id="titulo" value="" size="50"
+                <ace:textEntry id="titulo" value="#{albumBean.nomePesquisa}" size="50"
                                label="Título" maxlength="200" required="false"/>
-                <ice:commandButton value="Procurar" action="#{albumBean.pesquisarPorNome}" style="margin-top: 1em; margin-left: 5px;"/>
+                <ice:commandButton value="Pesquisar" action="#{albumBean.pesquisarPorNome}"/>
+                <ice:commandButton value="Listar todos" action="#{albumBean.listar}"/>
             </ice:panelGroup>
-            <ice:messages/>
         </ice:form>
 
         <ice:form>
             <ace:dataTable value="#{albumBean.albuns}"
-                           var="albuns"
+                           var="album"
                            paginator="true"
                            paginatorPosition="bottom"
                            rows="10">
+                <ace:column headerText="Código" sortBy="#{album.codigo}">
+                    <ice:outputText value="#{album.codigo}"/>
+                </ace:column>
                 <ace:column headerText="Título" sortBy="#{album.titulo}">
                     <ice:outputText value="#{album.titulo}"/>
                 </ace:column>
                 <ace:column headerText="Artista" sortBy="#{album.artista.nome}">
                     <ice:outputText value="#{album.artista.nome}"/>
-                </ace:column>
-                <ace:column headerText="Código" sortBy="#{album.codigo}">
-                    <ice:outputText value="#{album.codigo}"/>
                 </ace:column>
             </ace:dataTable>
         </ice:form>
