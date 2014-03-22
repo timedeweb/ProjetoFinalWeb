@@ -31,24 +31,34 @@ public class AlbumBean extends PageBean implements Serializable {
     private Album album = new Album();
 
     private AlbumDAO albumDAO = new AlbumDAO();
-    
+
     private ArtistaDAO artistaDAO = new ArtistaDAO();
-    
+
     private FaixaDAO faixaDAO = new FaixaDAO();
-    
+
     private List<Album> albuns = albumDAO.listar();
-    
+
     private List<Artista> artistas = artistaDAO.listar();
-    
-    private List<SelectItem> listaArtistas = new ArrayList<>();
+
+    private List<SelectItem> listaArtistas = popularSelectItem();
 
     private FaixaBean faixaBean = (FaixaBean) getBean("faixaBean");
+    
+    private long artistaSelecionado;
 
     private String nomePesquisa = "";
-    
+
     private boolean editar = false;
-    
+
     private UsuarioBean usuarioBean = (UsuarioBean) getBean("usuarioBean");
+
+    public long getArtistaSelecionado() {
+        return artistaSelecionado;
+    }
+
+    public void setArtistaSelecionado(long artistaSelecionado) {
+        this.artistaSelecionado = artistaSelecionado;
+    }
 
     public UsuarioBean getUsuarioBean() {
         return usuarioBean;
@@ -89,7 +99,7 @@ public class AlbumBean extends PageBean implements Serializable {
     public void setListaArtistas(List<SelectItem> listaArtistas) {
         this.listaArtistas = listaArtistas;
     }
-    
+
     public Album getAlbum() {
         return album;
     }
@@ -97,7 +107,7 @@ public class AlbumBean extends PageBean implements Serializable {
     public void setAlbum(Album album) {
         this.album = album;
     }
-    
+
     public AlbumDAO getAlbumDAO() {
         return albumDAO;
     }
@@ -148,6 +158,14 @@ public class AlbumBean extends PageBean implements Serializable {
     }
 
     public String cadastrar() {
+        album.setArtista(encontrarArtista(artistaSelecionado));
+        if (usuarioBean.getUsuarioLogado() == null){
+            usuarioBean.setarUsuarioLogado();
+        }
+        album.setUsuario(usuarioBean.getUsuarioLogado());
+        artistaDAO.inserir(album);
+        album = new Album();
+        artistaSelecionado = 0;
         return "";
     }
 
@@ -159,8 +177,26 @@ public class AlbumBean extends PageBean implements Serializable {
         faixaBean.setFaixas(faixaDAO.pesquisarPorAlbum(album.getCodigo()));
         return "faixas";
     }
-    public String listar(){
+
+    public String listar() {
         albuns = albumDAO.listar();
         return "";
+    }
+
+    public List<SelectItem> popularSelectItem() {
+        List<SelectItem> lista = new ArrayList<>();
+        for (Artista artista : artistas) {
+            lista.add(new SelectItem(artista.getCodigo(), artista.getNome()));
+        }
+        return lista;
+    }
+    
+    public Artista encontrarArtista(long codArtista){
+        for (Artista artista : artistas) {
+            if (artista.getCodigo() == codArtista){
+                return artista;
+            }
+        }
+        return null;
     }
 }

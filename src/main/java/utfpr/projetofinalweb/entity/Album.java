@@ -76,6 +76,10 @@ public class Album implements Serializable {
         return usuario;
     }
 
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     public Artista getArtista() {
         return artista;
     }
@@ -83,5 +87,6 @@ public class Album implements Serializable {
     public void setArtista(Artista artista) {
         this.artista = artista;
     }
+    
 
 }

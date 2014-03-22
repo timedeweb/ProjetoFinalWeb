@@ -34,18 +34,18 @@
 
         <ice:form>
             <ace:dataTable value="#{albumBean.albuns}"
-                           var="albuns"
+                           var="album"
                            paginator="true"
                            paginatorPosition="bottom"
                            rows="10">
+                <ace:column headerText="Código" sortBy="#{album.codigo}">
+                    <ice:outputText value="#{album.codigo}"/>
+                </ace:column>
                 <ace:column headerText="Título" sortBy="#{album.titulo}">
                     <ice:outputText value="#{album.titulo}"/>
                 </ace:column>
                 <ace:column headerText="Artista" sortBy="#{album.artista.nome}">
                     <ice:outputText value="#{album.artista.nome}"/>
-                </ace:column>
-                <ace:column headerText="Código" sortBy="#{album.codigo}">
-                    <ice:outputText value="#{album.codigo}"/>
                 </ace:column>
                 <ace:column headerText="Ações">
                     <ice:commandButton value="Editar" action="#"/>

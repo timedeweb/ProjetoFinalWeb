@@ -46,7 +46,9 @@
                 </ice:panelGroup>
                 <ice:panelGroup styleClass="form-block" layout="block">
                     <ice:outputLabel for="artista" value="Artista"/>
-
+                    <h:selectOneMenu value="#{albumBean.artistaSelecionado}">
+                        <f:selectItems value="#{albumBean.listaArtistas}"/>
+                    </h:selectOneMenu>
                 </ice:panelGroup>
             </ice:panelGroup>
             <ice:commandButton styleClass="btn btn-primary" value="Cadastrar" action="#{albumBean.cadastrar}" style="margin-top: 1em; margin-left: 55px;"/>
