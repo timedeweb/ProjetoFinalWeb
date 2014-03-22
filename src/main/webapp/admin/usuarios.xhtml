@@ -22,6 +22,12 @@
 
     <ui:define name="content">
         <ice:form>
+            <ice:panelGroup styleClass="form-block">
+                <ice:inputText id="titulo" value="#"  size="40"
+                               label="Título" maxlength="200" />
+                <ice:commandButton value="Pesquisar" action="#"/>
+            </ice:panelGroup>
+            <br/><br/>
             <ace:dataTable value="#{usuarioBean.usuarios}"
                            var="usuario"
                            paginator="true"
