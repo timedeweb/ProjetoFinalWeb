@@ -45,6 +45,26 @@ public class AlbumBean extends PageBean implements Serializable {
     private FaixaBean faixaBean = (FaixaBean) getBean("faixaBean");
 
     private String nomePesquisa = "";
+    
+    private boolean editar = false;
+    
+    private UsuarioBean usuarioBean = (UsuarioBean) getBean("usuarioBean");
+
+    public UsuarioBean getUsuarioBean() {
+        return usuarioBean;
+    }
+
+    public void setUsuarioBean(UsuarioBean usuarioBean) {
+        this.usuarioBean = usuarioBean;
+    }
+
+    public boolean isEditar() {
+        return editar;
+    }
+
+    public void setEditar(boolean editar) {
+        this.editar = editar;
+    }
 
     public List<Album> getAlbuns() {
         return albuns;
@@ -84,6 +104,14 @@ public class AlbumBean extends PageBean implements Serializable {
 
     public void setAlbumDAO(AlbumDAO albumDAO) {
         this.albumDAO = albumDAO;
+    }
+
+    public ArtistaDAO getArtistaDAO() {
+        return artistaDAO;
+    }
+
+    public void setArtistaDAO(ArtistaDAO artistaDAO) {
+        this.artistaDAO = artistaDAO;
     }
 
     public FaixaBean getFaixaBean() {
@@ -130,5 +158,9 @@ public class AlbumBean extends PageBean implements Serializable {
     public String listarFaixas() {
         faixaBean.setFaixas(faixaDAO.pesquisarPorAlbum(album.getCodigo()));
         return "faixas";
+    }
+    public String listar(){
+        albuns = albumDAO.listar();
+        return "";
     }
 }

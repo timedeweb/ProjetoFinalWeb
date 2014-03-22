@@ -17,20 +17,42 @@ import utfpr.projetofinalweb.entity.Artista;
 public class ArtistaDAO extends GenericDAO implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
-    public List<Artista> pesquisarPorNome(String nome){
-        em = getEntityManager();
-        Query q = em.createQuery("SELECT a FROM Artista a WHERE a.nome LIKE " + nome, Artista.class);
-        return q.getResultList();
+
+    public List<Artista> pesquisarPorNome(String nome) {
+        try {
+            em = getEntityManager();
+            Query q = em.createQuery("SELECT a FROM Artista a WHERE a.nome LIKE :nome", Artista.class);
+            q.setParameter("nome", nome);
+            return q.getResultList();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
-    public List<Artista> pesquisarPorUsuario(long codUsuario){
-        em = getEntityManager();
-        Query q = em.createQuery("SELECT a FROM Artista a WHERE a.usuario.codigo = " + codUsuario, Artista.class);
-        return q.getResultList();
+
+    public List<Artista> pesquisarPorUsuario(long codUsuario) {
+        try {
+            em = getEntityManager();
+            Query q = em.createQuery("SELECT a FROM Artista a WHERE a.usuario.codigo = :codigo", Artista.class);
+            q.setParameter("codigo", codUsuario);
+            return q.getResultList();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
-    public List<Artista> listar(){
-        em = getEntityManager();
-        Query q = em.createNamedQuery("Artista.findAll");
-        return q.getResultList();
+
+    public List<Artista> listar() {
+        try {
+            em = getEntityManager();
+            Query q = em.createNamedQuery("Artista.findAll");
+            return q.getResultList();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 }

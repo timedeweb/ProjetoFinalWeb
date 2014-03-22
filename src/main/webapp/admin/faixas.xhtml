@@ -26,6 +26,7 @@
                 <ice:inputText id="titulo" value="#{faixaBean.nomePesquisa}"  size="40"
                                label="Título" maxlength="200" />
                 <ice:commandButton value="Pesquisar" action="#{faixaBean.pesquisarPorNome}"/>
+                <ice:commandButton value="Listar todos" action="#{faixaBean.listar}"/>
             </ice:panelGroup>
             <br/><br/>
             <ace:dataTable value="#{faixaBean.faixas}"

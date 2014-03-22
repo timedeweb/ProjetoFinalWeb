@@ -1,16 +1,54 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ice="http://www.icesoft.com/icefaces/component"
+                xmlns:ace="http://www.icefaces.org/icefaces/components"
+                template="/WEB-INF/templates/layout.xhtml">
+
+    <ui:define name="styles">
+    </ui:define>
+
+    <ui:define name="metadata">
+    </ui:define>
+
+    <ui:define name="javascript">
+    </ui:define>
+
+    <ui:define name="top">
+        <h3>Artistas cadastrados</h3>
+    </ui:define>
+
+    <ui:define name="content">
+        <ice:form >
+            <ice:panelGroup>
+                <ice:outputLabel for="nome" value=""/>
+                <ace:textEntry id="nome" value="#{artistaBean.nomePesquisa}" size="50"
+                               label="Nome" maxlength="200" required="false"/>
+                <ice:commandButton value="Pesquisar" action="#{artistaBean.pesquisarPorNome}"/>
+                <ice:commandButton value="Listar todos" action="#{artistaBean.listar}"/>
+            </ice:panelGroup>
+            <ice:messages/>
+        </ice:form>
+        <ice:form>
+            <ace:dataTable value="#{artistaBean.artistas}"
+                           var="artistas"
+                           paginator="true"
+                           paginatorPosition="bottom"
+                           rows="10">
+                <ace:column headerText="Nome" sortBy="#{artista.nome}">
+                    <ice:outputText value="#{artista.nome}"/>
+                </ace:column>
+                <ace:column headerText="Código" sortBy="#{artista.codigo}">
+                    <ice:outputText value="#{artista.codigo}"/>
+                </ace:column>
+                <ace:column headerText="Ações">
+                    <ice:commandButton value="Editar" action="#"/>
+                    <ice:commandButton value="Excluir" action="#"/>
+                </ace:column>
+            </ace:dataTable>
+        </ice:form>
+    </ui:define>
+
+</ui:composition>

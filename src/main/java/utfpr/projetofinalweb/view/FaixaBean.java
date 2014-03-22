@@ -6,7 +6,6 @@
 package utfpr.projetofinalweb.view;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -37,6 +36,26 @@ public class FaixaBean extends PageBean implements Serializable {
     private List<Album> albuns = albumDAO.listar();
 
     private String nomePesquisa = "";
+    
+    private boolean editar = false;
+    
+    private UsuarioBean usuarioBean = (UsuarioBean) getBean("usuarioBean");
+
+    public UsuarioBean getUsuarioBean() {
+        return usuarioBean;
+    }
+
+    public void setUsuarioBean(UsuarioBean usuarioBean) {
+        this.usuarioBean = usuarioBean;
+    }
+
+    public boolean isEditar() {
+        return editar;
+    }
+
+    public void setEditar(boolean editar) {
+        this.editar = editar;
+    }
 
     public Faixa getFaixa() {
         return faixa;
@@ -96,10 +115,19 @@ public class FaixaBean extends PageBean implements Serializable {
     }
 
     public String cadastrar() {
+        if (usuarioBean.getUsuarioLogado() == null){
+            usuarioBean.setarUsuarioLogado();
+        }
+        faixa.setUsuario(usuarioBean.getUsuarioLogado());
+        faixaDAO.inserir(faixa);
         return "";
     }
 
     public String alterar() {
+        return "";
+    }
+    public String listar(){
+        faixas = faixaDAO.listar();
         return "";
     }
 }

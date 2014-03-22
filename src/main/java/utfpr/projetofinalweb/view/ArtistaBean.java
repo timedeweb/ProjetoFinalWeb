@@ -35,6 +35,26 @@ public class ArtistaBean extends PageBean implements Serializable {
     private Artista artista = new Artista();
 
     private AlbumBean albumBean = (AlbumBean) getBean("albumBean");
+    
+    private UsuarioBean usuarioBean = (UsuarioBean) getBean("usuarioBean");
+
+    public UsuarioBean getUsuarioBean() {
+        return usuarioBean;
+    }
+
+    public void setUsuarioBean(UsuarioBean usuarioBean) {
+        this.usuarioBean = usuarioBean;
+    }
+    
+    private boolean editar = false;
+
+    public boolean isEditar() {
+        return editar;
+    }
+
+    public void setEditar(boolean editar) {
+        this.editar = editar;
+    }
 
     public List<Artista> getArtistas() {
         return artistas;
@@ -95,7 +115,12 @@ public class ArtistaBean extends PageBean implements Serializable {
     }
 
     public String cadastrar() {
-        this.cadastrar();
+        if (usuarioBean.getUsuarioLogado() == null){
+            usuarioBean.setarUsuarioLogado();
+        }
+        artista.setUsuario(usuarioBean.getUsuarioLogado());
+        artistaDAO.inserir(artista);
+        artista = new Artista();
         return "";
     }
 
@@ -110,6 +135,10 @@ public class ArtistaBean extends PageBean implements Serializable {
     public String listarColaborador(int codColaborador){
         this.artistas = this.artistaDAO.pesquisarPorUsuario(codColaborador);
         return "colaborador/artistas?redirect=true";
+    }
+    public String listar(){
+        artistas = artistaDAO.listar();
+        return "";
     }
 
 }

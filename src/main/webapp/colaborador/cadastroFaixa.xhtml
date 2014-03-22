@@ -63,7 +63,8 @@
 
                 </ice:panelGroup>
             </ice:panelGroup>
-            <ice:commandButton styleClass="btn btn-primary" value="Cadastrar" action="#{usuarioBean.cadastrar}" style="margin-top: 1em; margin-left: 55px;"/>
+            <ice:commandButton styleClass="btn btn-primary" value="Cadastrar" action="#{faixaBean.cadastrar}" rendered="#{!faixaBean.editar}"/>
+            <ice:commandButton styleClass="btn btn-primary" value="Editar" action="#{faixaBean.editar}" rendered="#{faixaBean.editar}"/>
             <ice:messages/>
 
         </ice:form>

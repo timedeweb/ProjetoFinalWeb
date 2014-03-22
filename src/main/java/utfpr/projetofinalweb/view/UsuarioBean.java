@@ -11,6 +11,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.DatatypeConverter;
 import utfpr.projetofinalweb.dao.UsuarioDAO;
 import utfpr.projetofinalweb.entity.Perfil;
@@ -27,15 +28,28 @@ public class UsuarioBean extends PageBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Usuario usuarioLogado = new Usuario();
+    private Usuario usuarioLogado = null;
 
     private Usuario usuario = new Usuario();
-    
-    //${facesContext.externalContext.userPrincipal.name}
 
+    //${facesContext.externalContext.userPrincipal.name}
+    //HttpServletRequest req = getRequest();
+    //req.getUserPrincipal();
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
 
     private List<Usuario> usuarios = usuarioDAO.listar();
+
+    private String nomePesquisa;
+    
+    private boolean editar = false;
+
+    public boolean isEditar() {
+        return editar;
+    }
+
+    public void setEditar(boolean editar) {
+        this.editar = editar;
+    }
 
     public Usuario getUsuarioLogado() {
         return usuarioLogado;
@@ -43,6 +57,7 @@ public class UsuarioBean extends PageBean implements Serializable {
 
     public void setUsuarioLogado(Usuario usuarioLogado) {
         this.usuarioLogado = usuarioLogado;
+
     }
 
     public Usuario getUsuario() {
@@ -69,6 +84,14 @@ public class UsuarioBean extends PageBean implements Serializable {
         this.usuarioDAO = usuarioDAO;
     }
 
+    public String getNomePesquisa() {
+        return nomePesquisa;
+    }
+
+    public void setNomePesquisa(String nomePesquisa) {
+        this.nomePesquisa = nomePesquisa;
+    }
+
     public String excluir(int usuarioId) {
         return "";
     }
@@ -86,6 +109,19 @@ public class UsuarioBean extends PageBean implements Serializable {
 
     public String alterar(int usuarioId) {
         return "";
+    }
+    
+    public String pesquisarPorNome(){
+        this.usuarios = usuarioDAO.pesquisarPorNome(nomePesquisa);
+        return "";
+    }
+    public String listar(){
+        usuarios = usuarioDAO.listar();
+        return "";
+    }
+    public void setarUsuarioLogado(){
+        HttpServletRequest req = getRequest();
+        usuarioLogado = usuarioDAO.pesquisarPorEmail(req.getUserPrincipal().getName());
     }
 
 }

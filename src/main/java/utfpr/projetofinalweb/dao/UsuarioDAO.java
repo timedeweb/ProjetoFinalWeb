@@ -19,26 +19,41 @@ public class UsuarioDAO extends GenericDAO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public List<Usuario> pesquisarPorNome(String nome) {
-        
-        em = getEntityManager();
-        Query q = em.createQuery("select u from Usuario u where u.nome like " + nome, Usuario.class);
-        return q.getResultList();
-        
+        try {
+            em = getEntityManager();
+            Query q = em.createQuery("select u from Usuario u where u.nome like :nome", Usuario.class);
+            q.setParameter("nome", nome);
+            return q.getResultList();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 
     public List<Usuario> listar() {
-        
-        em = getEntityManager();
-        Query q = em.createNamedQuery("Usuario.findAll");
-        return q.getResultList();
-        
-    }
-    public Usuario pesquisarPorEmail(String email){
-        
-        em = getEntityManager();
-        Query q = em.createQuery("select u from Usuario u where u.email = " + email, Usuario.class);
-        return (Usuario) q.getSingleResult();
-        
+        try {
+            em = getEntityManager();
+            Query q = em.createNamedQuery("Usuario.findAll");
+            return q.getResultList();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 
+    public Usuario pesquisarPorEmail(String email) {
+        try {
+            em = getEntityManager();
+            Query q = em.createQuery("select u from Usuario u where u.email = :email", Usuario.class);
+            q.setParameter("email", email);
+            return (Usuario) q.getSingleResult();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+    
 }

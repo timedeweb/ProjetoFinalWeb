@@ -8,7 +8,6 @@ package utfpr.projetofinalweb.dao;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Query;
-import utfpr.projetofinalweb.entity.Album;
 import utfpr.projetofinalweb.entity.Faixa;
 
 /**
@@ -18,26 +17,57 @@ import utfpr.projetofinalweb.entity.Faixa;
 public class FaixaDAO extends GenericDAO implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
-    public List<Faixa> pesquisarPorNome(String nome){
-        em = getEntityManager();
-        Query q = em.createQuery("SELECT f FROM Faixa f WHERE f.titulo LIKE " + nome, Faixa.class);
-        return q.getResultList();
+
+    public List<Faixa> pesquisarPorNome(String nome) {
+        try {
+            em = getEntityManager();
+            Query q = em.createQuery("SELECT f FROM Faixa f WHERE f.titulo LIKE :titulo", Faixa.class);
+            q.setParameter("titulo", nome);
+            return q.getResultList();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+
     }
-    public List<Faixa> pesquisarPorUsuario(long codUsuario){
-        em = getEntityManager();
-        Query q = em.createQuery("SELECT f FROM Faixa f WHERE f.usuario.codigo = " + codUsuario, Faixa.class);
-        return q.getResultList();
+
+    public List<Faixa> pesquisarPorUsuario(long codUsuario) {
+        try {
+            em = getEntityManager();
+            Query q = em.createQuery("SELECT f FROM Faixa f WHERE f.usuario.codigo = :codigo", Faixa.class);
+            q.setParameter("codigo", codUsuario);
+            return q.getResultList();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
+
     public List<Faixa> pesquisarPorAlbum(long codAlbum) {
-        em = getEntityManager();
-        Query q = em.createQuery("SELECT f FROM Faixa f WHERE f.album.codigo = " + codAlbum, Faixa.class);
-        return q.getResultList();
+        try {
+            em = getEntityManager();
+            Query q = em.createQuery("SELECT f FROM Faixa f WHERE f.album.codigo = :codigo", Faixa.class);
+            q.setParameter("codigo", codAlbum);
+            return q.getResultList();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
+
     public List<Faixa> listar() {
-        em = getEntityManager();
-        Query q = em.createNamedQuery("Faixa.findAll");
-        return q.getResultList();
+        try {
+            em = getEntityManager();
+            Query q = em.createNamedQuery("Faixa.findAll");
+            return q.getResultList();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 
 }

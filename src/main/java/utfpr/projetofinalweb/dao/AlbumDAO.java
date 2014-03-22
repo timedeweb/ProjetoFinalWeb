@@ -17,28 +17,56 @@ import utfpr.projetofinalweb.entity.Album;
 public class AlbumDAO extends GenericDAO implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     public List<Album> pesquisarPorNome(String nome) {
-        em = getEntityManager();
-        Query q = em.createQuery("select a from Album a where a.titulo like " + nome, Album.class);
-        return q.getResultList();
+        try {
+            em = getEntityManager();
+            Query q = em.createQuery("select a from Album a where a.titulo like :titulo", Album.class);
+            q.setParameter("titulo", nome);
+            return q.getResultList();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 
     public List<Album> pesquisarPorUsuario(long codUsuario) {
-        em = getEntityManager();
-        Query q = em.createQuery("select a from Album a where a.usuario.codigo = " + codUsuario, Album.class);
-        return q.getResultList();
+        try {
+            em = getEntityManager();
+            Query q = em.createQuery("select a from Album a where a.usuario.codigo = :codigo", Album.class);
+            q.setParameter("codigo", codUsuario);
+            return q.getResultList();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 
     public List<Album> pesquisarPorArtista(long codArtista) {
-        em = getEntityManager();
-        Query q = em.createQuery("select a from Album a where a.artista.codigo = " + codArtista, Album.class);
-        return q.getResultList();
+        try {
+            em = getEntityManager();
+            Query q = em.createQuery("select a from Album a where a.artista.codigo = :codigo", Album.class);
+            q.setParameter("codigo", codArtista);
+            return q.getResultList();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
-    public List<Album> listar(){
-        em = getEntityManager();
-        Query q = em.createNamedQuery("Album.findAll");
-        return q.getResultList();
+
+    public List<Album> listar() {
+        try {
+            em = getEntityManager();
+            Query q = em.createNamedQuery("Album.findAll");
+            return q.getResultList();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 
 }
