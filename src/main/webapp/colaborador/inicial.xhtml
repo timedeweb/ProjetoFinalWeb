@@ -21,6 +21,8 @@
     </ui:define>
 
     <ui:define name="content" >
-        <ice:commandLink action="#{artistaBean.listarColaborador}" value="Meus Artistas"/>     
+        <ice:form>
+            <ice:commandLink action="#{artistaBean.listarColaborador}" value="Meus Artistas"/>     
+        </ice:form>
     </ui:define>
 </ui:composition>

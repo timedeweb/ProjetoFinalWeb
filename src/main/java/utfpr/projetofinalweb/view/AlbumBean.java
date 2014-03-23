@@ -204,6 +204,6 @@ public class AlbumBean extends PageBean implements Serializable {
     public String inserirNovo() {
         this.editar = false;
         this.album = new Album();
-        return "/colaborador/cadastroAlbum";
+        return "cadastroAlbum";
     }
 }

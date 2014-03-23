@@ -138,7 +138,7 @@ public class ArtistaBean extends PageBean implements Serializable {
             usuarioBean.setarUsuarioLogado();
         }
         artistas = artistaDAO.pesquisarPorUsuario(usuarioBean.getUsuarioLogado().getCodigo());
-        return FacesContext.getCurrentInstance().getExternalContext().getApplicationContextPath() + "/colaborador/artistas?redirect=true";
+        return "artistas";
     }
 
     public String listar() {
@@ -149,7 +149,7 @@ public class ArtistaBean extends PageBean implements Serializable {
     public String inserirNovo() {
         this.editar = false;
         this.artista = new Artista();
-        return "/colaborador/cadastroArtista";
+        return "cadastroArtista";
     }
 
 }
