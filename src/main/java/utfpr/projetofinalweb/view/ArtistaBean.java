@@ -150,7 +150,7 @@ public class ArtistaBean extends PageBean implements Serializable {
     public String inserirNovo() {
         this.editar = false;
         this.artista = new Artista();
-        String page = getFacesContext().getExternalContext().getRequestContextPath() + "/colaborador/cadastroArtista";
+        String page = "/colaborador/cadastroArtista.xhtml";
         return page;
     }
 
