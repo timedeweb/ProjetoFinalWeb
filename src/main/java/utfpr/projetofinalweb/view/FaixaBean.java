@@ -14,7 +14,6 @@ import javax.faces.model.SelectItem;
 import utfpr.projetofinalweb.dao.AlbumDAO;
 import utfpr.projetofinalweb.dao.FaixaDAO;
 import utfpr.projetofinalweb.entity.Album;
-import utfpr.projetofinalweb.entity.Artista;
 import utfpr.projetofinalweb.entity.Faixa;
 import utfpr.projetofinalweb.support.PageBean;
 
@@ -37,15 +36,15 @@ public class FaixaBean extends PageBean implements Serializable {
     private List<Faixa> faixas = faixaDAO.listar();
 
     private List<Album> albuns = albumDAO.listar();
-    
+
     private List<SelectItem> listaAlbuns = popularSelectItem();
-    
+
     private long albumSelecionado;
 
     private String nomePesquisa = "";
-    
+
     private boolean editar = false;
-    
+
     private UsuarioBean usuarioBean = (UsuarioBean) getBean("usuarioBean");
 
     public long getAlbumSelecionado() {
@@ -139,7 +138,7 @@ public class FaixaBean extends PageBean implements Serializable {
 
     public String cadastrar() {
         faixa.setAlbum(encontrarAlbum(albumSelecionado));
-        if (usuarioBean.getUsuarioLogado() == null){
+        if (usuarioBean.getUsuarioLogado() == null) {
             usuarioBean.setarUsuarioLogado();
         }
         faixa.setUsuario(usuarioBean.getUsuarioLogado());
@@ -152,10 +151,12 @@ public class FaixaBean extends PageBean implements Serializable {
     public String alterar() {
         return "";
     }
-    public String listar(){
+
+    public String listar() {
         faixas = faixaDAO.listar();
         return "";
     }
+
     public List<SelectItem> popularSelectItem() {
         List<SelectItem> lista = new ArrayList<>();
         for (Album album : albuns) {
@@ -163,13 +164,19 @@ public class FaixaBean extends PageBean implements Serializable {
         }
         return lista;
     }
-    
-    public Album encontrarAlbum(long codAlbum){
+
+    public Album encontrarAlbum(long codAlbum) {
         for (Album album : albuns) {
-            if (album.getCodigo() == codAlbum){
+            if (album.getCodigo() == codAlbum) {
                 return album;
             }
         }
         return null;
+    }
+
+    public String inserirNovo() {
+        this.editar = false;
+        this.faixa = new Faixa();
+        return "/colaborador/cadastroFaixa";
     }
 }

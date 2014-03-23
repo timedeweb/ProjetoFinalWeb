@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import utfpr.projetofinalweb.dao.AlbumDAO;
 import utfpr.projetofinalweb.dao.ArtistaDAO;
@@ -43,7 +44,7 @@ public class AlbumBean extends PageBean implements Serializable {
     private List<SelectItem> listaArtistas = popularSelectItem();
 
     private FaixaBean faixaBean = (FaixaBean) getBean("faixaBean");
-    
+
     private long artistaSelecionado;
 
     private String nomePesquisa = "";
@@ -159,7 +160,7 @@ public class AlbumBean extends PageBean implements Serializable {
 
     public String cadastrar() {
         album.setArtista(encontrarArtista(artistaSelecionado));
-        if (usuarioBean.getUsuarioLogado() == null){
+        if (usuarioBean.getUsuarioLogado() == null) {
             usuarioBean.setarUsuarioLogado();
         }
         album.setUsuario(usuarioBean.getUsuarioLogado());
@@ -190,13 +191,19 @@ public class AlbumBean extends PageBean implements Serializable {
         }
         return lista;
     }
-    
-    public Artista encontrarArtista(long codArtista){
+
+    public Artista encontrarArtista(long codArtista) {
         for (Artista artista : artistas) {
-            if (artista.getCodigo() == codArtista){
+            if (artista.getCodigo() == codArtista) {
                 return artista;
             }
         }
         return null;
+    }
+
+    public String inserirNovo() {
+        this.editar = false;
+        this.album = new Album();
+        return "/colaborador/cadastroAlbum";
     }
 }

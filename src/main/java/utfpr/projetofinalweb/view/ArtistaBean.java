@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import utfpr.projetofinalweb.dao.AlbumDAO;
 import utfpr.projetofinalweb.dao.ArtistaDAO;
 import utfpr.projetofinalweb.entity.Artista;
@@ -27,7 +28,7 @@ public class ArtistaBean extends PageBean implements Serializable {
     private ArtistaDAO artistaDAO = new ArtistaDAO();
 
     private AlbumDAO albumDAO = new AlbumDAO();
-    
+
     private List<Artista> artistas = artistaDAO.listar();
 
     private String nomePesquisa = "";
@@ -35,7 +36,7 @@ public class ArtistaBean extends PageBean implements Serializable {
     private Artista artista = new Artista();
 
     private AlbumBean albumBean = (AlbumBean) getBean("albumBean");
-    
+
     private UsuarioBean usuarioBean = (UsuarioBean) getBean("usuarioBean");
 
     public UsuarioBean getUsuarioBean() {
@@ -45,7 +46,7 @@ public class ArtistaBean extends PageBean implements Serializable {
     public void setUsuarioBean(UsuarioBean usuarioBean) {
         this.usuarioBean = usuarioBean;
     }
-    
+
     private boolean editar = false;
 
     public boolean isEditar() {
@@ -103,7 +104,6 @@ public class ArtistaBean extends PageBean implements Serializable {
     public void setAlbumBean(AlbumBean albumBean) {
         this.albumBean = albumBean;
     }
-    
 
     public String pesquisarPorNome() {
         artistas = artistaDAO.pesquisarPorNome(nomePesquisa);
@@ -115,7 +115,7 @@ public class ArtistaBean extends PageBean implements Serializable {
     }
 
     public String cadastrar() {
-        if (usuarioBean.getUsuarioLogado() == null){
+        if (usuarioBean.getUsuarioLogado() == null) {
             usuarioBean.setarUsuarioLogado();
         }
         artista.setUsuario(usuarioBean.getUsuarioLogado());
@@ -132,16 +132,24 @@ public class ArtistaBean extends PageBean implements Serializable {
         albumBean.setAlbuns(albumDAO.pesquisarPorArtista(artista.getCodigo()));
         return "album";
     }
-    public String listarColaborador(){
-        if (usuarioBean.getUsuarioLogado() == null){
+
+    public String listarColaborador() {
+        if (usuarioBean.getUsuarioLogado() == null) {
             usuarioBean.setarUsuarioLogado();
         }
         artistas = artistaDAO.pesquisarPorUsuario(usuarioBean.getUsuarioLogado().getCodigo());
-        return "colaborador/artistas?redirect=true";
+        return FacesContext.getCurrentInstance().getExternalContext().getApplicationContextPath() + "/colaborador/artistas?redirect=true";
     }
-    public String listar(){
+
+    public String listar() {
         artistas = artistaDAO.listar();
         return "";
+    }
+
+    public String inserirNovo() {
+        this.editar = false;
+        this.artista = new Artista();
+        return "/colaborador/cadastroArtista";
     }
 
 }
