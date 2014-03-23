@@ -177,6 +177,6 @@ public class FaixaBean extends PageBean implements Serializable {
     public String inserirNovo() {
         this.editar = false;
         this.faixa = new Faixa();
-        return "cadastroFaixa";
+        return "/colaborador/cadastroFaixa?faces-redirect=true";
     }
 }

@@ -148,7 +148,7 @@ public class ArtistaBean extends PageBean implements Serializable {
     public String inserirNovo() {
         this.editar = false;
         this.artista = new Artista();
-        return "cadastroArtista";
+        return "/colaborador/cadastroArtista?faces-redirect=true";
     }
 
 }
