@@ -7,6 +7,7 @@ package utfpr.projetofinalweb.view;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -149,7 +150,8 @@ public class ArtistaBean extends PageBean implements Serializable {
     public String inserirNovo() {
         this.editar = false;
         this.artista = new Artista();
-        return "cadastroArtista";
+        String page = getFacesContext().getExternalContext().getRequestContextPath() + "/colaborador/cadastroArtista";
+        return page;
     }
 
 }
