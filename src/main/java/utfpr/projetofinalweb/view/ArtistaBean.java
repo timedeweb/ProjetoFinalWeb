@@ -7,10 +7,8 @@ package utfpr.projetofinalweb.view;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import utfpr.projetofinalweb.dao.AlbumDAO;
 import utfpr.projetofinalweb.dao.ArtistaDAO;
 import utfpr.projetofinalweb.entity.Artista;
@@ -150,8 +148,7 @@ public class ArtistaBean extends PageBean implements Serializable {
     public String inserirNovo() {
         this.editar = false;
         this.artista = new Artista();
-        String page = "/colaborador/cadastroArtista.xhtml";
-        return page;
+        return "cadastroArtista";
     }
 
 }

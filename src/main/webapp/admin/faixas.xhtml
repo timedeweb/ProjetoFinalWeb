@@ -25,8 +25,9 @@
             <ice:panelGroup styleClass="form-block">
                 <ice:inputText id="titulo" value="#{faixaBean.nomePesquisa}"  size="40"
                                label="Título" maxlength="200" />
-                <ice:commandButton value="Pesquisar" action="#{faixaBean.pesquisarPorNome}"/>
-                <ice:commandButton value="Listar todos" action="#{faixaBean.listar}"/>
+                <ice:commandButton id="pesquisar" value="Pesquisar" action="#{faixaBean.pesquisarPorNome}"/>
+                <ice:commandButton id="listar" value="Listar todos" action="#{faixaBean.listar}"/>
+                <ice:commandButton id="inserir" value="Inserir Novo" action="#{faixaBean.inserirNovo}"/>
             </ice:panelGroup>
             <br/><br/>
             <ace:dataTable value="#{faixaBean.faixas}"
@@ -54,7 +55,6 @@
                     <ice:commandButton value="Excluir" action="#"/>
                 </ace:column>
             </ace:dataTable>
-            <ice:commandButton value="Inserir Novo" action="#{faixaBean.inserirNovo}"/>
         </ice:form>
     </ui:define>
 

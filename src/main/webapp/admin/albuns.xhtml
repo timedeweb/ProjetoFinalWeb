@@ -21,18 +21,15 @@
     </ui:define>
 
     <ui:define name="content">
-        <ice:form >
+        <ice:form>
             <ice:panelGroup>
                 <ice:outputLabel for="titulo" value=""/>
                 <ace:textEntry id="titulo" value="#{albumBean.nomePesquisa}" size="50"
                                label="Título" maxlength="200" required="false"/>
-                <ice:commandButton value="Pesquisar" action="#{albumBean.pesquisarPorNome}"/>
-                <ice:commandButton value="Listar todos" action="#{albumBean.listar}"/>
+                <ice:commandButton id="pesquisar" value="Pesquisar" action="#{albumBean.pesquisarPorNome}"/>
+                <ice:commandButton id="listar" value="Listar todos" action="#{albumBean.listar}"/>
+                <ice:commandButton id="inserir" value="Inserir Novo" action="#{albumBean.inserirNovo}"/>
             </ice:panelGroup>
-            <ice:messages/>
-        </ice:form>
-
-        <ice:form>
             <ace:dataTable value="#{albumBean.albuns}"
                            var="album"
                            paginator="true"
@@ -52,7 +49,6 @@
                     <ice:commandButton value="Excluir" action="#"/>
                 </ace:column>
             </ace:dataTable>
-            <ice:commandButton value="Inserir Novo" action="#{albumBean.inserirNovo}"/>
         </ice:form>
     </ui:define>
 </ui:composition>
