@@ -152,6 +152,13 @@ public class AlbumBean extends PageBean implements Serializable {
         albuns = albumDAO.pesquisarPorNome(nomePesquisa);
         return "";
     }
+    public String pesquisarPorNomeColaborador() {
+        if (usuarioBean.getUsuarioLogado() == null) {
+            usuarioBean.setarUsuarioLogado();
+        }
+        albuns = albumDAO.pesquisarPorNomeUsuario(nomePesquisa, usuarioBean.getUsuarioLogado().getCodigo());
+        return "";
+    }
 
     public String excluir() {
         return "";
