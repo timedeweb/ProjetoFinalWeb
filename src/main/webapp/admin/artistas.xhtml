@@ -35,11 +35,11 @@
                            paginator="true"
                            paginatorPosition="bottom"
                            rows="10">
-                <ace:column headerText="Nome" sortBy="#{artista.nome}">
-                    <ice:outputText value="#{artista.nome}"/>
-                </ace:column>
                 <ace:column headerText="Código" sortBy="#{artista.codigo}">
                     <ice:outputText value="#{artista.codigo}"/>
+                </ace:column>
+                <ace:column headerText="Nome" sortBy="#{artista.nome}">
+                    <ice:commandLink value="#{artista.nome}" action="#{artistaBean.listarAlbuns(artista.codigo)}"/>
                 </ace:column>
                 <ace:column headerText="Ações">
                     <ice:commandButton value="Editar" action="#"/>

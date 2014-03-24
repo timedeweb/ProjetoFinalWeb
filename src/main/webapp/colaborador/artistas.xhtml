@@ -27,7 +27,7 @@
                 <ace:textEntry id="nome" value="#{artistaBean.nomePesquisa}" size="50"
                                label="Nome" maxlength="200" required="false"/>
                 <ice:commandButton value="Pesquisar" action="#{artistaBean.pesquisarPorNome}"/>
-                <ice:commandButton value="Listar todos" action="#{artistaBean.listar}"/>
+                <ice:commandButton value="Listar todos" action="#{artistaBean.listarColaborador}"/>
             </ice:panelGroup>
             <ice:messages/>
         </ice:form>
@@ -41,7 +41,7 @@
                     <ice:outputText value="#{artista.codigo}"/>
                 </ace:column>
                 <ace:column headerText="Nome" sortBy="#{artista.nome}">
-                    <ice:outputText value="#{artista.nome}"/>
+                    <ice:commandLink value="#{artista.nome}" action="#{artistaBean.listarAlbuns(artista.codigo)}"/>
                 </ace:column>
                 <ace:column headerText="Ações">
                     <ice:commandButton value="Editar" action="#"/>

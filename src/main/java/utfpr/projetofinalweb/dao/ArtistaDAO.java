@@ -21,7 +21,7 @@ public class ArtistaDAO extends GenericDAO implements Serializable {
     public List<Artista> pesquisarPorNome(String nome) {
         try {
             em = getEntityManager();
-            Query q = em.createQuery("SELECT a FROM Artista a WHERE a.nome LIKE :nome", Artista.class);
+            Query q = em.createQuery("SELECT a FROM Artista a WHERE a.nome like :nome", Artista.class);
             q.setParameter("nome", nome);
             return q.getResultList();
         } finally {

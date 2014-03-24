@@ -145,11 +145,17 @@ public class FaixaBean extends PageBean implements Serializable {
         faixaDAO.inserir(faixa);
         faixa = new Faixa();
         albumSelecionado = 0;
-        return "";
+        faixas = faixaDAO.listar();
+        return "faixas?faces-redirect=true";
     }
 
     public String alterar() {
-        return "";
+        editar = false;
+        faixaDAO.alterar(faixa);
+        faixa = new Faixa();
+        albumSelecionado = 0;
+        faixas = faixaDAO.listar();
+        return "faixas?faces-redirect=true";
     }
 
     public String listar() {
@@ -177,6 +183,18 @@ public class FaixaBean extends PageBean implements Serializable {
     public String inserirNovo() {
         this.editar = false;
         this.faixa = new Faixa();
+        return "/colaborador/cadastroFaixa?faces-redirect=true";
+    }
+    public String listarColaborador() {
+        if (usuarioBean.getUsuarioLogado() == null) {
+            usuarioBean.setarUsuarioLogado();
+        }
+        faixas = faixaDAO.pesquisarPorUsuario(usuarioBean.getUsuarioLogado().getCodigo());
+        return "faixas?faces-redirect=true";
+    }
+    public String alterarCadastro(int codFaixa) {
+        this.editar = true;
+        faixa = (Faixa) faixaDAO.pesquisar(Faixa.class, codFaixa);
         return "/colaborador/cadastroFaixa?faces-redirect=true";
     }
 }

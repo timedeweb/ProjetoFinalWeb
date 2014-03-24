@@ -21,7 +21,7 @@ public class FaixaDAO extends GenericDAO implements Serializable {
     public List<Faixa> pesquisarPorNome(String nome) {
         try {
             em = getEntityManager();
-            Query q = em.createQuery("SELECT f FROM Faixa f WHERE f.titulo LIKE :titulo", Faixa.class);
+            Query q = em.createQuery("SELECT f FROM Faixa f WHERE f.titulo like :titulo", Faixa.class);
             q.setParameter("titulo", nome);
             return q.getResultList();
         } finally {

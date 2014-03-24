@@ -42,4 +42,15 @@ public class GenericDAO extends JpaController implements Serializable {
         em.close();
     }
 
+    public Object pesquisar(Class classe, int codigo) {
+        try {
+            em = this.getEntityManager();
+            return em.find(classe, codigo);
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+
 }

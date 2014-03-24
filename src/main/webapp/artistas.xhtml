@@ -41,7 +41,7 @@
                     <ice:outputText value="#{artista.codigo}"/>
                 </ace:column>
                 <ace:column headerText="Nome" sortBy="#{artista.nome}">
-                    <ice:outputText value="#{artista.nome}"/>
+                    <ice:commandLink value="#{artista.nome}" action="#{artistaBean.listarAlbuns(artista.codigo)}"/>
                 </ace:column>
             </ace:dataTable>
         </ice:form>

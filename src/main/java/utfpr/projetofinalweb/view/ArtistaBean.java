@@ -120,16 +120,21 @@ public class ArtistaBean extends PageBean implements Serializable {
         artista.setUsuario(usuarioBean.getUsuarioLogado());
         artistaDAO.inserir(artista);
         artista = new Artista();
-        return "";
+        artistas = artistaDAO.listar();
+        return "artistas?faces-redirect=true";
     }
 
     public String alterar() {
-        return "";
+        editar = false;
+        artistaDAO.alterar(artista);
+        artista = new Artista();
+        artistas = artistaDAO.listar();
+        return "artistas?faces-redirect=true";
     }
 
-    public String listarAlbuns() {
-        albumBean.setAlbuns(albumDAO.pesquisarPorArtista(artista.getCodigo()));
-        return "album";
+    public String listarAlbuns(long codArtista) {
+        albumBean.setAlbuns(albumDAO.pesquisarPorArtista(codArtista));
+        return "albuns";
     }
 
     public String listarColaborador() {
@@ -137,7 +142,7 @@ public class ArtistaBean extends PageBean implements Serializable {
             usuarioBean.setarUsuarioLogado();
         }
         artistas = artistaDAO.pesquisarPorUsuario(usuarioBean.getUsuarioLogado().getCodigo());
-        return "artistas";
+        return "artistas?faces-redirect=true";
     }
 
     public String listar() {
@@ -148,6 +153,11 @@ public class ArtistaBean extends PageBean implements Serializable {
     public String inserirNovo() {
         this.editar = false;
         this.artista = new Artista();
+        return "/colaborador/cadastroArtista?faces-redirect=true";
+    }
+    public String alterarCadastro(int codArtista) {
+        this.editar = true;
+        artista = (Artista) artistaDAO.pesquisar(Artista.class, codArtista);
         return "/colaborador/cadastroArtista?faces-redirect=true";
     }
 

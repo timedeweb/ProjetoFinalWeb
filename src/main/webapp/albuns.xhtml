@@ -29,9 +29,6 @@
                 <ice:commandButton value="Pesquisar" action="#{albumBean.pesquisarPorNome}"/>
                 <ice:commandButton value="Listar todos" action="#{albumBean.listar}"/>
             </ice:panelGroup>
-        </ice:form>
-
-        <ice:form>
             <ace:dataTable value="#{albumBean.albuns}"
                            var="album"
                            paginator="true"
@@ -41,7 +38,7 @@
                     <ice:outputText value="#{album.codigo}"/>
                 </ace:column>
                 <ace:column headerText="Título" sortBy="#{album.titulo}">
-                    <ice:outputText value="#{album.titulo}"/>
+                    <ice:commandLink value="#{album.titulo}" action="#{albumBean.listarFaixas(album.codigo)}" />
                 </ace:column>
                 <ace:column headerText="Artista" sortBy="#{album.artista.nome}">
                     <ice:outputText value="#{album.artista.nome}"/>

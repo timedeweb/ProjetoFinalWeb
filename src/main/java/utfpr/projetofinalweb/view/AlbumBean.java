@@ -167,15 +167,21 @@ public class AlbumBean extends PageBean implements Serializable {
         albumDAO.inserir(album);
         album = new Album();
         artistaSelecionado = 0;
-        return "";
+        albuns = albumDAO.listar();
+        return "albuns?faces-redirect=true";
     }
 
     public String alterar() {
-        return "";
+        editar = false;
+        albumDAO.alterar(album);
+        album = new Album();
+        artistaSelecionado = 0;
+        albuns = albumDAO.listar();
+        return "albuns?faces-redirect=true";
     }
 
-    public String listarFaixas() {
-        faixaBean.setFaixas(faixaDAO.pesquisarPorAlbum(album.getCodigo()));
+    public String listarFaixas(int codAlbum) {
+        faixaBean.setFaixas(faixaDAO.pesquisarPorAlbum(codAlbum));
         return "faixas";
     }
 
@@ -204,6 +210,18 @@ public class AlbumBean extends PageBean implements Serializable {
     public String inserirNovo() {
         this.editar = false;
         this.album = new Album();
+        return "/colaborador/cadastroAlbum?faces-redirect=true";
+    }
+    public String listarColaborador() {
+        if (usuarioBean.getUsuarioLogado() == null) {
+            usuarioBean.setarUsuarioLogado();
+        }
+        albuns = albumDAO.pesquisarPorUsuario(usuarioBean.getUsuarioLogado().getCodigo());
+        return "albuns?faces-redirect=true";
+    }
+    public String alterarCadastro(int codAlbum) {
+        this.editar = true;
+        album = (Album) albumDAO.pesquisar(Album.class, codAlbum);
         return "/colaborador/cadastroAlbum?faces-redirect=true";
     }
 }
