@@ -45,7 +45,7 @@
                     <ice:outputText value="#{album.artista.nome}"/>
                 </ace:column>
                 <ace:column headerText="Ações">
-                    <ice:commandButton value="Editar" action="#"/>
+                    <ice:commandButton value="Editar" action="#{albumBean.alterarCadastro(album.codigo)}"/>
                     <ice:commandButton value="Excluir" action="#"/>
                 </ace:column>
             </ace:dataTable>

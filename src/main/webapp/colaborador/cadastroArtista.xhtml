@@ -45,7 +45,8 @@
                         label="Nome" maxlength="200" required="true" requiredMessage="O campo nome é obrigatório" requiredIndicator="*"/>
                 </ice:panelGroup>
             </ice:panelGroup>
-            <ice:commandButton styleClass="btn btn-primary" value="Cadastrar" action="#{artistaBean.cadastrar}"/>
+            <ice:commandButton styleClass="btn btn-primary" value="Cadastrar" action="#{artistaBean.cadastrar}" rendered="#{!artistaBean.editar}"/>
+            <ice:commandButton styleClass="btn btn-primary" value="Editar" action="#{artistaBean.alterar}" rendered="#{artistaBean.editar}"/>
             <ice:messages/>
 
         </ice:form>

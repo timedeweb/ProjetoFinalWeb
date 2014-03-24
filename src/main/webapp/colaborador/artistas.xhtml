@@ -44,7 +44,7 @@
                     <ice:commandLink value="#{artista.nome}" action="#{artistaBean.listarAlbuns(artista.codigo)}"/>
                 </ace:column>
                 <ace:column headerText="Ações">
-                    <ice:commandButton value="Editar" action="#"/>
+                    <ice:commandButton value="Editar" action="#{artistaBean.alterarCadastro(artista.codigo)}"/>
                     <ice:commandButton value="Excluir" action="#"/>
                 </ace:column>
             </ace:dataTable>

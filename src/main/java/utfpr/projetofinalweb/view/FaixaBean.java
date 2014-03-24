@@ -145,8 +145,16 @@ public class FaixaBean extends PageBean implements Serializable {
         faixaDAO.inserir(faixa);
         faixa = new Faixa();
         albumSelecionado = 0;
-        faixas = faixaDAO.listar();
-        return "faixas?faces-redirect=true";
+        if (usuarioBean.getUsuarioLogado() == null) {
+            usuarioBean.setarUsuarioLogado();
+        }
+        if (usuarioBean.getUsuarioLogado().getPerfil().getCodigo() == 1) {
+            listarColaborador();
+            return "faixas?faces-redirect=true";
+        } else {
+            faixas = faixaDAO.listar();
+            return "/admin/faixas?faces-redirect=true";
+        }
     }
 
     public String alterar() {
@@ -154,8 +162,16 @@ public class FaixaBean extends PageBean implements Serializable {
         faixaDAO.alterar(faixa);
         faixa = new Faixa();
         albumSelecionado = 0;
-        faixas = faixaDAO.listar();
-        return "faixas?faces-redirect=true";
+        if (usuarioBean.getUsuarioLogado() == null) {
+            usuarioBean.setarUsuarioLogado();
+        }
+        if (usuarioBean.getUsuarioLogado().getPerfil().getCodigo() == 1) {
+            listarColaborador();
+            return "faixas?faces-redirect=true";
+        } else {
+            faixas = faixaDAO.listar();
+            return "/admin/faixas?faces-redirect=true";
+        }
     }
 
     public String listar() {
@@ -185,6 +201,7 @@ public class FaixaBean extends PageBean implements Serializable {
         this.faixa = new Faixa();
         return "/colaborador/cadastroFaixa?faces-redirect=true";
     }
+
     public String listarColaborador() {
         if (usuarioBean.getUsuarioLogado() == null) {
             usuarioBean.setarUsuarioLogado();
@@ -192,7 +209,8 @@ public class FaixaBean extends PageBean implements Serializable {
         faixas = faixaDAO.pesquisarPorUsuario(usuarioBean.getUsuarioLogado().getCodigo());
         return "faixas?faces-redirect=true";
     }
-    public String alterarCadastro(int codFaixa) {
+
+    public String alterarCadastro(long codFaixa) {
         this.editar = true;
         faixa = (Faixa) faixaDAO.pesquisar(Faixa.class, codFaixa);
         return "/colaborador/cadastroFaixa?faces-redirect=true";

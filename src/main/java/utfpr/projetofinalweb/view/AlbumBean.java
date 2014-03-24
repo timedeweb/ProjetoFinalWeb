@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import utfpr.projetofinalweb.dao.AlbumDAO;
 import utfpr.projetofinalweb.dao.ArtistaDAO;
@@ -167,8 +166,16 @@ public class AlbumBean extends PageBean implements Serializable {
         albumDAO.inserir(album);
         album = new Album();
         artistaSelecionado = 0;
-        albuns = albumDAO.listar();
-        return "albuns?faces-redirect=true";
+        if (usuarioBean.getUsuarioLogado() == null) {
+            usuarioBean.setarUsuarioLogado();
+        }
+        if (usuarioBean.getUsuarioLogado().getPerfil().getCodigo() == 1) {
+            listarColaborador();
+            return "albuns?faces-redirect=true";
+        } else {
+            albuns = albumDAO.listar();
+            return "/admin/albuns?faces-redirect=true";
+        }
     }
 
     public String alterar() {
@@ -176,8 +183,16 @@ public class AlbumBean extends PageBean implements Serializable {
         albumDAO.alterar(album);
         album = new Album();
         artistaSelecionado = 0;
-        albuns = albumDAO.listar();
-        return "albuns?faces-redirect=true";
+        if (usuarioBean.getUsuarioLogado() == null) {
+            usuarioBean.setarUsuarioLogado();
+        }
+        if (usuarioBean.getUsuarioLogado().getPerfil().getCodigo() == 1) {
+            listarColaborador();
+            return "albuns?faces-redirect=true";
+        } else {
+            albuns = albumDAO.listar();
+            return "/admin/albuns?faces-redirect=true";
+        }
     }
 
     public String listarFaixas(int codAlbum) {
@@ -212,6 +227,7 @@ public class AlbumBean extends PageBean implements Serializable {
         this.album = new Album();
         return "/colaborador/cadastroAlbum?faces-redirect=true";
     }
+
     public String listarColaborador() {
         if (usuarioBean.getUsuarioLogado() == null) {
             usuarioBean.setarUsuarioLogado();
@@ -219,7 +235,8 @@ public class AlbumBean extends PageBean implements Serializable {
         albuns = albumDAO.pesquisarPorUsuario(usuarioBean.getUsuarioLogado().getCodigo());
         return "albuns?faces-redirect=true";
     }
-    public String alterarCadastro(int codAlbum) {
+
+    public String alterarCadastro(long codAlbum) {
         this.editar = true;
         album = (Album) albumDAO.pesquisar(Album.class, codAlbum);
         return "/colaborador/cadastroAlbum?faces-redirect=true";

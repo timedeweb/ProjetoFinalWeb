@@ -50,7 +50,7 @@
                     <ice:outputText value="#{faixa.album.titulo}"/>
                 </ace:column>
                 <ace:column headerText="Ações">
-                    <ice:commandButton value="Editar" action="#"/>
+                    <ice:commandButton value="Editar" action="#{faixaBean.alterarCadastro(faixa.codigo)}"/>
                     <ice:commandButton value="Excluir" action="#"/>
                 </ace:column>
             </ace:dataTable>
