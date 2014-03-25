@@ -99,8 +99,8 @@ public class UsuarioBean extends PageBean implements Serializable {
         usuario.setPerfil(perfil);
         MessageDigest md = MessageDigest.getInstance("SHA");
         usuario.setSenha(DatatypeConverter.printHexBinary(md.digest(usuario.getSenha().getBytes())));
-        usuario = new Usuario();
         usuarioDAO.inserir(usuario);
+        usuario = new Usuario();
         return "sucesso";
     }
     
