@@ -26,6 +26,7 @@ public class LoginBean extends RequestBean implements Serializable {
     private String login;
     private String senha;
     private String result;
+    private UsuarioBean usuarioBean = (UsuarioBean) getBean("usuarioBean");
     
     public LoginBean() {
     }
@@ -59,6 +60,7 @@ public class LoginBean extends RequestBean implements Serializable {
         HttpServletRequest request = getRequest();
         try {
             request.logout();
+            usuarioBean.setUsuarioLogado(null);
             action = "/index.xhtml?faces-redirect=true";
         } catch (ServletException e) {
             log("logoutAction", e);
