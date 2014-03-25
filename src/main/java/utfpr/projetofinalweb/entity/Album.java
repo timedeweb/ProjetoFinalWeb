@@ -7,7 +7,6 @@ package utfpr.projetofinalweb.entity;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,7 +34,6 @@ public class Album implements Serializable {
     @SequenceGenerator(name = "album_seq", sequenceName = "album_seq", allocationSize = 1)
     private long codigo;
 
-    @Column(unique = true)
     private String titulo;
 
     @OneToMany

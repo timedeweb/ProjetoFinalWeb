@@ -47,7 +47,9 @@
                 <ice:panelGroup styleClass="form-block" layout="block">
                     <ice:outputLabel for="email" value="E-mail"/>
                      <ace:textEntry id="email" value="#{usuarioBean.usuario.email}" size="80"
-                          label="E-mail" maxlength="200" required="true" requiredMessage="O campo email é obrigatório" requiredIndicator="*"/>
+                                    label="E-mail" maxlength="200" required="true" requiredMessage="O campo email é obrigatório" requiredIndicator="*">
+                         <f:validator validatorId="UsuarioValidator"/>
+                     </ace:textEntry>
                 </ice:panelGroup>
                 <ice:panelGroup styleClass="form-block" layout="block">
                     <ice:outputLabel for="senha" value="Senha"/>

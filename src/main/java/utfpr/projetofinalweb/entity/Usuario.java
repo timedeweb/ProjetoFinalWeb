@@ -32,7 +32,6 @@ public class Usuario implements Serializable {
     @SequenceGenerator(name = "usuario_seq", sequenceName = "usuario_seq", allocationSize = 1)
     private long codigo;
 
-    @Column(unique = true)
     private String nome;
 
     @Column(unique = true)
