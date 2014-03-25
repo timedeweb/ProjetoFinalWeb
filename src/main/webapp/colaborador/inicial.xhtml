@@ -17,17 +17,17 @@
     </ui:define>
 
     <ui:define name="top">
-        <h2>Boas Vindas!</h2>
+        <h2>Seja bem vindo colaborador</h2>
     </ui:define>
 
     <ui:define name="content" >
         <ice:form>
 
-                <ice:commandLink action="#{artistaBean.listarColaborador}" value="Meus Artistas"/> 
-                <br/>
-                <ice:commandLink action="#{albumBean.listarColaborador}" value="Meus Álbuns"/>   
-                <br/>
-                <ice:commandLink action="#{faixaBean.listarColaborador}" value="Minhas Faixas"/>
+            <ice:commandLink action="#{artistaBean.listarColaborador}" value="Meus Artistas"/> 
+            <br/><br/>
+            <ice:commandLink action="#{albumBean.listarColaborador}" value="Meus Álbuns"/>   
+            <br/><br/>
+            <ice:commandLink action="#{faixaBean.listarColaborador}" value="Minhas Faixas"/>
         </ice:form>
     </ui:define>
 </ui:composition>

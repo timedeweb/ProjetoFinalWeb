@@ -27,14 +27,13 @@
                                label="Título" maxlength="200" />
                 <ice:commandButton id="pesquisar" value="Pesquisar" action="#{faixaBean.pesquisarPorNome}"/>
                 <ice:commandButton id="listar" value="Listar todos" action="#{faixaBean.listar}"/>
-                <ice:commandButton id="inserir" value="Inserir Novo" action="#{faixaBean.inserirNovo}"/>
             </ice:panelGroup>
             <br/><br/>
             <ace:dataTable value="#{faixaBean.faixas}"
                            var="faixa"
                            paginator="true"
                            paginatorPosition="bottom"
-                           rows="10">
+                           rows="5">
                 <ace:column headerText="Código" sortBy="#{faixa.codigo}">
                     <ice:outputText value="#{faixa.codigo}"/>
                 </ace:column>
@@ -52,9 +51,16 @@
                 </ace:column>
                 <ace:column headerText="Ações">
                     <ice:commandButton value="Editar" action="#{faixaBean.alterarCadastro(faixa.codigo)}"/>
-                    <ice:commandButton value="Excluir" action="#"/>
+                    &nbsp;
+                    &nbsp;
+                    <ice:commandButton value="Excluir" action="#{faixaBean.excluir(faixa.codigo,'admin')}"/>
                 </ace:column>
             </ace:dataTable>
+            <br/><br/>
+            <ice:panelGroup styleClass="form-block">
+                <ice:commandButton id="inserir" value="Inserir Novo" action="#{faixaBean.inserirNovo}"/>
+            </ice:panelGroup>
+            <ice:messages/>
         </ice:form>
     </ui:define>
 

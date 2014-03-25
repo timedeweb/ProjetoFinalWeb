@@ -29,13 +29,12 @@
                 <ice:commandButton value="Listar todos" action="#{faixaBean.listar}"/>
             </ice:panelGroup>
             <ice:messages/>
-        </ice:form>
-        <ice:form>
+            <br/><br/>
             <ace:dataTable value="#{faixaBean.faixas}"
                            var="faixa"
                            paginator="true"
                            paginatorPosition="bottom"
-                           rows="10">
+                           rows="5">
                 <ace:column headerText="Título" sortBy="#{faixa.titulo}">
                     <ice:outputText value="#{faixa.titulo}"/>
                 </ace:column>

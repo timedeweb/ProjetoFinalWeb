@@ -109,7 +109,30 @@ public class ArtistaBean extends PageBean implements Serializable {
         return "";
     }
 
-    public String excluir() {
+    public String pesquisarPorNomeColaborador() {
+        if (usuarioBean.getUsuarioLogado() == null) {
+            usuarioBean.setarUsuarioLogado();
+        }
+        artistas = artistaDAO.pesquisarPorNomeUsuario(nomePesquisa, usuarioBean.getUsuarioLogado().getCodigo());
+        return "";
+    }
+
+    public String excluir(long codArtista, String idPagina) {
+        try {
+            if (usuarioBean.getUsuarioLogado() == null) {
+                usuarioBean.setarUsuarioLogado();
+            }
+            artistaDAO.remover(Artista.class, codArtista);
+            albumBean.setArtistas(artistaDAO.listar());
+            albumBean.setListaArtistas(albumBean.popularSelectItem());
+            if (idPagina.equals("colaborador")) {
+                artistas = artistaDAO.pesquisarPorUsuario(usuarioBean.getUsuarioLogado().getCodigo());
+            } else {
+                artistas = artistaDAO.listar();
+            }
+        } catch (Exception e) {
+
+        }
         return "";
     }
 
@@ -123,6 +146,8 @@ public class ArtistaBean extends PageBean implements Serializable {
         if (usuarioBean.getUsuarioLogado() == null) {
             usuarioBean.setarUsuarioLogado();
         }
+        albumBean.setArtistas(artistaDAO.listar());
+        albumBean.setListaArtistas(albumBean.popularSelectItem());
         if (usuarioBean.getUsuarioLogado().getPerfil().getCodigo() == 1) {
             listarColaborador();
             return "artistas?faces-redirect=true";
@@ -139,6 +164,8 @@ public class ArtistaBean extends PageBean implements Serializable {
         if (usuarioBean.getUsuarioLogado() == null) {
             usuarioBean.setarUsuarioLogado();
         }
+        albumBean.setArtistas(artistaDAO.listar());
+        albumBean.setListaArtistas(albumBean.popularSelectItem());
         if (usuarioBean.getUsuarioLogado().getPerfil().getCodigo() == 1) {
             listarColaborador();
             return "artistas?faces-redirect=true";

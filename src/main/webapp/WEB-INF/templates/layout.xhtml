@@ -43,6 +43,8 @@
                                         <li><a href="${facesContext.externalContext.requestContextPath}/admin/usuarios.xhtml">Usuários</a></li>
                                     </ul>
                                 </li>
+                                <li><ice:commandLink value="${facesContext.externalContext.userPrincipal.name}" action="#" rendered="${!empty facesContext.externalContext.userPrincipal}"/></li>
+                                <li><ice:commandLink value="Logout" action="#{loginBean.logoutAction}" rendered="${!empty facesContext.externalContext.userPrincipal}"/></li>
                             </ul>
                         </div><!--/.nav-collapse -->
                     </div>

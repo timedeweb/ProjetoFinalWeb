@@ -29,12 +29,12 @@
                 <ice:commandButton value="Pesquisar" action="#{albumBean.pesquisarPorNomeColaborador}"/>
                 <ice:commandButton value="Listar todos" action="#{albumBean.listarColaborador}"/>
             </ice:panelGroup>
-            <ice:messages/>
+            <br/><br/>
             <ace:dataTable value="#{albumBean.albuns}"
                            var="album"
                            paginator="true"
                            paginatorPosition="bottom"
-                           rows="10">
+                           rows="5">
                 <ace:column headerText="Código" sortBy="#{album.codigo}">
                     <ice:outputText value="#{album.codigo}"/>
                 </ace:column>
@@ -46,10 +46,16 @@
                 </ace:column>                
                 <ace:column headerText="Ações">
                     <ice:commandButton value="Editar" action="#{albumBean.alterarCadastro(album.codigo)}"/>
-                    <ice:commandButton value="Excluir" action="#"/>
+                    &nbsp;
+                    &nbsp;
+                    <ice:commandButton value="Excluir" action="#{albumBean.excluir(album.codigo,'colaborador')}"/>
                 </ace:column>
             </ace:dataTable>
-             <ice:commandButton value="Inserir Novo" action="#{albumBean.inserirNovo}"/>
+            <br/><br/>
+            <ice:panelGroup styleClass="form-block">
+                <ice:commandButton value="Inserir Novo" action="#{albumBean.inserirNovo}"/>
+            </ice:panelGroup>
+            <ice:messages/>
         </ice:form>
     </ui:define>
 </ui:composition>

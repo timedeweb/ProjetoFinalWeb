@@ -29,11 +29,12 @@
                 <ice:commandButton value="Pesquisar" action="#{albumBean.pesquisarPorNome}"/>
                 <ice:commandButton value="Listar todos" action="#{albumBean.listar}"/>
             </ice:panelGroup>
+            <br/><br/>
             <ace:dataTable value="#{albumBean.albuns}"
                            var="album"
                            paginator="true"
                            paginatorPosition="bottom"
-                           rows="10">
+                           rows="5">
                 <ace:column headerText="Código" sortBy="#{album.codigo}">
                     <ice:outputText value="#{album.codigo}"/>
                 </ace:column>

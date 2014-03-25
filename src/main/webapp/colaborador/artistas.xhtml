@@ -26,17 +26,15 @@
                 <ice:outputLabel for="nome" value=""/>
                 <ace:textEntry id="nome" value="#{artistaBean.nomePesquisa}" size="50"
                                label="Nome" maxlength="200" required="false"/>
-                <ice:commandButton value="Pesquisar" action="#{artistaBean.pesquisarPorNome}"/>
+                <ice:commandButton value="Pesquisar" action="#{artistaBean.pesquisarPorNomeColaborador}"/>
                 <ice:commandButton value="Listar todos" action="#{artistaBean.listarColaborador}"/>
             </ice:panelGroup>
-            <ice:messages/>
-        </ice:form>
-        <ice:form>
+            <br/><br/>
             <ace:dataTable value="#{artistaBean.artistas}"
                            var="artista"
                            paginator="true"
                            paginatorPosition="bottom"
-                           rows="10">
+                           rows="5">
                 <ace:column headerText="Código" sortBy="#{artista.codigo}">
                     <ice:outputText value="#{artista.codigo}"/>
                 </ace:column>
@@ -45,10 +43,16 @@
                 </ace:column>
                 <ace:column headerText="Ações">
                     <ice:commandButton value="Editar" action="#{artistaBean.alterarCadastro(artista.codigo)}"/>
-                    <ice:commandButton value="Excluir" action="#"/>
+                    &nbsp;
+                    &nbsp;
+                    <ice:commandButton value="Excluir" action="#{artistaBean.excluir(artista.codigo,'colaborador')}"/>
                 </ace:column>
             </ace:dataTable>
-            <ice:commandButton id="inserir" value="Inserir Novo" action="#{artistaBean.inserirNovo}"/>
+            <br/><br/>
+            <ice:panelGroup styleClass="form-block">
+                <ice:commandButton id="inserir" value="Inserir Novo" action="#{artistaBean.inserirNovo}"/>
+            </ice:panelGroup>
+            <ice:messages/>
         </ice:form>
     </ui:define>
 

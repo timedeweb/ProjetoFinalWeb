@@ -22,7 +22,7 @@ public class UsuarioDAO extends GenericDAO implements Serializable {
         try {
             em = getEntityManager();
             Query q = em.createQuery("select u from Usuario u where u.nome like :nome", Usuario.class);
-            q.setParameter("nome", nome);
+            q.setParameter("nome", "%"+nome+"%");
             return q.getResultList();
         } finally {
             if (em != null) {

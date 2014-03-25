@@ -132,7 +132,28 @@ public class FaixaBean extends PageBean implements Serializable {
         return "";
     }
 
-    public String excluir() {
+    public String pesquisarPorNomeColaborador() {
+        if (usuarioBean.getUsuarioLogado() == null) {
+            usuarioBean.setarUsuarioLogado();
+        }
+        faixas = faixaDAO.pesquisarPorNomeUsuario(nomePesquisa, usuarioBean.getUsuarioLogado().getCodigo());
+        return "";
+    }
+
+    public String excluir(long codFaixa, String idPagina) {
+        try {
+            if (usuarioBean.getUsuarioLogado() == null) {
+                usuarioBean.setarUsuarioLogado();
+            }
+            faixaDAO.remover(Faixa.class, codFaixa);
+            if (idPagina.equals("colaborador")) {
+                faixas = faixaDAO.pesquisarPorUsuario(usuarioBean.getUsuarioLogado().getCodigo());
+            } else {
+                faixas = faixaDAO.listar();
+            }
+        } catch (Exception e) {
+
+        }
         return "";
     }
 

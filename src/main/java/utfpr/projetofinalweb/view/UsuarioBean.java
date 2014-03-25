@@ -92,10 +92,6 @@ public class UsuarioBean extends PageBean implements Serializable {
         this.nomePesquisa = nomePesquisa;
     }
 
-    public String excluir(int usuarioId) {
-        return "";
-    }
-
     public String cadastrar() throws NoSuchAlgorithmException {
         Perfil perfil = new Perfil();
         perfil.setCodigo(1);
@@ -104,10 +100,6 @@ public class UsuarioBean extends PageBean implements Serializable {
         MessageDigest md = MessageDigest.getInstance("SHA");
         usuario.setSenha(DatatypeConverter.printHexBinary(md.digest(usuario.getSenha().getBytes())));
         usuarioDAO.inserir(usuario);
-        return "";
-    }
-
-    public String alterar(int usuarioId) {
         return "";
     }
     

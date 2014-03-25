@@ -152,6 +152,7 @@ public class AlbumBean extends PageBean implements Serializable {
         albuns = albumDAO.pesquisarPorNome(nomePesquisa);
         return "";
     }
+
     public String pesquisarPorNomeColaborador() {
         if (usuarioBean.getUsuarioLogado() == null) {
             usuarioBean.setarUsuarioLogado();
@@ -160,7 +161,22 @@ public class AlbumBean extends PageBean implements Serializable {
         return "";
     }
 
-    public String excluir() {
+    public String excluir(long codAlbum, String idPagina) {
+        try {
+            if (usuarioBean.getUsuarioLogado() == null) {
+                usuarioBean.setarUsuarioLogado();
+            }
+            albumDAO.remover(Album.class, codAlbum);
+            faixaBean.setAlbuns(albumDAO.listar());
+            faixaBean.setListaAlbuns(faixaBean.popularSelectItem());
+            if (idPagina.equals("colaborador")) {
+                albuns = albumDAO.pesquisarPorUsuario(usuarioBean.getUsuarioLogado().getCodigo());
+            } else {
+                albuns = albumDAO.listar();
+            }
+        } catch (Exception e) {
+
+        }
         return "";
     }
 
@@ -176,6 +192,8 @@ public class AlbumBean extends PageBean implements Serializable {
         if (usuarioBean.getUsuarioLogado() == null) {
             usuarioBean.setarUsuarioLogado();
         }
+        faixaBean.setAlbuns(albumDAO.listar());
+        faixaBean.setListaAlbuns(faixaBean.popularSelectItem());
         if (usuarioBean.getUsuarioLogado().getPerfil().getCodigo() == 1) {
             listarColaborador();
             return "albuns?faces-redirect=true";
@@ -193,6 +211,8 @@ public class AlbumBean extends PageBean implements Serializable {
         if (usuarioBean.getUsuarioLogado() == null) {
             usuarioBean.setarUsuarioLogado();
         }
+        faixaBean.setAlbuns(albumDAO.listar());
+        faixaBean.setListaAlbuns(faixaBean.popularSelectItem());
         if (usuarioBean.getUsuarioLogado().getPerfil().getCodigo() == 1) {
             listarColaborador();
             return "albuns?faces-redirect=true";

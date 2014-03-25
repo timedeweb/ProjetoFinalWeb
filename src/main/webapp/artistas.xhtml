@@ -30,13 +30,12 @@
                 <ice:commandButton value="Listar todos" action="#{artistaBean.listar}"/>
             </ice:panelGroup>
             <ice:messages/>
-        </ice:form>
-        <ice:form>
+            <br/><br/>
             <ace:dataTable value="#{artistaBean.artistas}"
                            var="artista"
                            paginator="true"
                            paginatorPosition="bottom"
-                           rows="10">
+                           rows="5">
                 <ace:column headerText="Código" sortBy="#{artista.codigo}">
                     <ice:outputText value="#{artista.codigo}"/>
                 </ace:column>

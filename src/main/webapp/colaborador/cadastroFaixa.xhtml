@@ -19,7 +19,7 @@
                 margin-left: 4px;
                 width: 50px;
             }
-            
+
             .icePnlGrp {
                 margin-top: 4px;
             }
@@ -52,7 +52,7 @@
                                    label="Título" maxlength="40" required="true" requiredMessage="O campo título é obrigatório" requiredIndicator="*"/>
                 </ice:panelGroup>
                 <ice:panelGroup styleClass="form-block" layout="block">
-                    <ice:outputLabel for="duracao" value="Duração(s)"/>
+                    <ice:outputLabel for="duracao" value="Duração"/>
                     <ace:textEntry id="duracao" value="#{faixaBean.faixa.duracao}" size="80"
                                    label= "Duração" maxlength="3600" requiredMessage="O campo duração é obrigatório" required="true" requiredIndicator="*">
                         <f:validateLongRange minimum="0" maximum="3600"></f:validateLongRange>
@@ -64,11 +64,12 @@
                         <f:selectItems value="#{faixaBean.listaAlbuns}"/>
                     </h:selectOneMenu>
                 </ice:panelGroup>
+                <br/>
             </ice:panelGroup>
             <ice:commandButton styleClass="btn btn-primary" value="Cadastrar" action="#{faixaBean.cadastrar}" rendered="#{!faixaBean.editar}"/>
             <ice:commandButton styleClass="btn btn-primary" value="Editar" action="#{faixaBean.alterar}" rendered="#{faixaBean.editar}"/>
+            <br/><br/>
             <ice:messages/>
-
         </ice:form>
     </ui:define>
 

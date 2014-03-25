@@ -19,7 +19,7 @@
                 margin-left: 4px;
                 width: 50px;
             }
-            
+
             .icePnlGrp {
                 margin-top: 4px;
             }
@@ -50,9 +50,11 @@
                         <f:selectItems value="#{albumBean.listaArtistas}"/>
                     </h:selectOneMenu>
                 </ice:panelGroup>
+                <br/>
             </ice:panelGroup>
             <ice:commandButton styleClass="btn btn-primary" value="Cadastrar" action="#{albumBean.cadastrar}" rendered="#{!albumBean.editar}"/>
             <ice:commandButton styleClass="btn btn-primary" value="Editar" action="#{albumBean.alterar}" rendered="#{albumBean.editar}"/>
+            <br/><br/>
             <ice:messages/>
 
         </ice:form>

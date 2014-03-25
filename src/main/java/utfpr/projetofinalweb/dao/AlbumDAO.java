@@ -22,7 +22,7 @@ public class AlbumDAO extends GenericDAO implements Serializable {
         try {
             em = getEntityManager();
             Query q = em.createQuery("select a from Album a where a.titulo like :titulo", Album.class);
-            q.setParameter("titulo", nome);
+            q.setParameter("titulo", "%" + nome + "%");
             return q.getResultList();
         } finally {
             if (em != null) {
@@ -35,7 +35,7 @@ public class AlbumDAO extends GenericDAO implements Serializable {
         try {
             em = getEntityManager();
             Query q = em.createQuery("select a from Album a where a.titulo like :titulo and a.usuario.codigo = :codigo", Album.class);
-            q.setParameter("titulo", nome);
+            q.setParameter("titulo", "%" + nome + "%");
             q.setParameter("codigo", codUsuario);
             return q.getResultList();
         } finally {

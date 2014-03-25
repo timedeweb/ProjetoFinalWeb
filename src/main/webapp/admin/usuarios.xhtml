@@ -33,7 +33,7 @@
                            var="usuario"
                            paginator="true"
                            paginatorPosition="bottom"
-                           rows="10">
+                           rows="5">
                 <ace:column headerText="Código" sortBy="#{usuario.codigo}">
                     <ice:outputText value="#{usuario.codigo}"/>
                 </ace:column>
@@ -45,10 +45,6 @@
                 </ace:column>
                 <ace:column headerText="Perfil" sortBy="#{usuario.perfil.descricao}">
                     <ice:outputText value="#{usuario.perfil.descricao}"/>
-                </ace:column>
-                <ace:column headerText="Ações">
-                    <ice:commandButton value="Editar" action="#{usuarioBean.alterar(usuario.codigo)}"/>
-                    <ice:commandButton value="Excluir" action="#{usuarioBean.excluir(usuario.codigo)}"/>
                 </ace:column>
             </ace:dataTable>
         </ice:form>
