@@ -230,6 +230,15 @@ public class FaixaBean extends PageBean implements Serializable {
         faixas = faixaDAO.pesquisarPorUsuario(usuarioBean.getUsuarioLogado().getCodigo());
         return "faixas?faces-redirect=true";
     }
+    public String listarAdmin() {
+        faixas = faixaDAO.listar();
+        return "/admin/faixas?faces-redirect=true";
+    }
+    
+    public String listarTodos() {
+        faixas = faixaDAO.listar();
+        return "/faixas?faces-redirect=true";
+    }
 
     public String alterarCadastro(long codFaixa) {
         this.editar = true;

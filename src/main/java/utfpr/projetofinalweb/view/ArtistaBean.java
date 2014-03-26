@@ -188,6 +188,16 @@ public class ArtistaBean extends PageBean implements Serializable {
         return "artistas?faces-redirect=true";
     }
 
+    public String listarAdmin() {
+        artistas = artistaDAO.listar();
+        return "/admin/artistas?faces-redirect=true";
+    }
+    
+    public String listarTodos() {
+        artistas = artistaDAO.listar();
+        return "/artistas?faces-redirect=true";
+    }
+
     public String listar() {
         artistas = artistaDAO.listar();
         return "";

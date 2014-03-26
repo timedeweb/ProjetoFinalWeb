@@ -262,6 +262,15 @@ public class AlbumBean extends PageBean implements Serializable {
         albuns = albumDAO.pesquisarPorUsuario(usuarioBean.getUsuarioLogado().getCodigo());
         return "albuns?faces-redirect=true";
     }
+    public String listarAdmin() {
+        albuns = albumDAO.listar();
+        return "/admin/albuns?faces-redirect=true";
+    }
+    
+    public String listarTodos() {
+        albuns = albumDAO.listar();
+        return "/albuns?faces-redirect=true";
+    }
 
     public String alterarCadastro(long codAlbum) {
         this.editar = true;
