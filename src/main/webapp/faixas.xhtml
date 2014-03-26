@@ -34,15 +34,15 @@
                            var="faixa"
                            paginator="true"
                            paginatorPosition="bottom"
-                           rows="5">
-                <ace:column headerText="Título" sortBy="#{faixa.titulo}">
-                    <ice:outputText value="#{faixa.titulo}"/>
-                </ace:column>
+                           rows="10">
                 <ace:column headerText="Código" sortBy="#{faixa.codigo}">
                     <ice:outputText value="#{faixa.codigo}"/>
                 </ace:column>
                 <ace:column headerText="Número" sortBy="#{faixa.numero}">
                     <ice:outputText value="#{faixa.numero}"/>
+                </ace:column>
+                <ace:column headerText="Título" sortBy="#{faixa.titulo}">
+                    <ice:outputText value="#{faixa.titulo}"/>
                 </ace:column>
                 <ace:column headerText="Álbum" sortBy="#{faixa.album.titulo}">
                     <ice:outputText value="#{faixa.album.titulo}"/>

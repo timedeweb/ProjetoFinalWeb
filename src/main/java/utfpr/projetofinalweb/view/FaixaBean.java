@@ -166,9 +166,6 @@ public class FaixaBean extends PageBean implements Serializable {
         faixaDAO.inserir(faixa);
         faixa = new Faixa();
         albumSelecionado = 0;
-        if (usuarioBean.getUsuarioLogado() == null) {
-            usuarioBean.setarUsuarioLogado();
-        }
         if (usuarioBean.getUsuarioLogado().getPerfil().getCodigo() == 1) {
             listarColaborador();
             return "faixas?faces-redirect=true";
@@ -180,6 +177,7 @@ public class FaixaBean extends PageBean implements Serializable {
 
     public String alterar() {
         editar = false;
+        faixa.setAlbum(encontrarAlbum(albumSelecionado));
         faixaDAO.alterar(faixa);
         faixa = new Faixa();
         albumSelecionado = 0;

@@ -205,6 +205,7 @@ public class AlbumBean extends PageBean implements Serializable {
 
     public String alterar() {
         editar = false;
+        album.setArtista(encontrarArtista(artistaSelecionado));
         albumDAO.alterar(album);
         album = new Album();
         artistaSelecionado = 0;
